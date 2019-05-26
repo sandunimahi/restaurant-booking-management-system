@@ -1,0 +1,167 @@
+<div class="container scroll" style="border-top: 1000px">
+  <cdk-virtual-scroll-viewport itemSize="50" class="example-viewport">
+
+<form (submit)="onRegister(customerRegistrationForm)" #customerRegistrationForm="ngForm">
+<!-- Start - Personal Information Panel -->
+<div class="container border border-secondary Info">
+  <p class="font-weight-bold">Owner Personal Information</p>
+  <!-- Start - First Name, Last Name -->
+      <div class="form-row">
+        <div class="col-md-6 mb-3">
+          <label for="ownerFirstName">First name</label>
+          <input ngModel #ownerFirstName="ngModel" pattern="[a-zA-Z\s]+" type="text" class="form-control" id="ownerFirstName" name="ownerFirstName" placeholder="First name" required>
+          <div class="alert alert-danger" *ngIf="!ownerFirstName.valid && ownerFirstName.touched">Enter Valid First Name</div>
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <label for="ownerLastName">Last name</label>
+          <input ngModel #ownerLastName="ngModel" pattern="[a-zA-Z\s]+" type="text" class="form-control" id="ownerLastName" name="ownerLastName" placeholder="Last name" required>
+          <div class="alert alert-danger" *ngIf="!ownerLastName.valid && ownerLastName.touched">Enter Valid Last Name</div>
+        </div>
+
+
+      </div>
+<!-- End - First Name, Last Name, Gender -->
+      <div calss="form-row">
+          <div class="col-md-6 mb-3">
+              <label style="margin-left: -18px">Gender</label>
+              <div style="padding-top: 6px">
+                <mat-radio-group ngModel #gender="ngModel" name="gender" required>
+                    <mat-radio-button value="Male">Male</mat-radio-button>
+                    <mat-radio-button value="Female">Female</mat-radio-button>
+                    <mat-radio-button value="Other">Other</mat-radio-button>
+                 </mat-radio-group>
+                 <div class="alert alert-danger" *ngIf="!gender.valid && gender.touched">Please select gender </div>
+              </div>
+            </div>
+      </div>
+<!-- Start - Address, City, District -->
+  <div class="form-row" style="padding-bottom: 10px">
+    <div class="col-md-9 mb-3">
+      <label for="ownerAddress">Address</label>
+      <input ngModel #ownerAddress="ngModel" type="text" class="form-control" id="ownerAddress" name="ownerAddress" placeholder="Address" required>
+      <div class="alert alert-danger" *ngIf="!ownerAddress.valid && ownerAddress.touched">Enter an address</div>
+    </div>
+    <div class="col-md-3 mb-3">
+        <label for="ownerCity">City</label>
+        <input ngModel #ownerCity="ngModel" type="text" class="form-control" id="ownerCity" name="ownerCity" placeholder="City" required>
+        <div class="alert alert-danger" *ngIf="!ownerCity.valid && ownerCity.touched">Enter a city </div>
+      </div>
+
+</div>
+<!-- End - Address, City, District -->
+
+<!-- Start - NIC, Date of Birth-->
+  <div class="form-row">
+      <div class="col-md-4 mb-3" >
+          <label for="ownerNIC">NIC</label>
+          <div style="padding-top: 10px">
+             <input ngModel #ownerNIC="ngModel" pattern="([0-9]{9}[x|X|v|V]|[0-9]{12})$"type="text" class="form-control" id="ownerNIC" name="ownerNIC" placeholder="NIC" >
+             <div class="alert alert-danger" *ngIf="!ownerNIC.valid && ownerNIC.touched">Enter Valid NIC</div>
+          </div>
+      </div>
+
+        <div class="col-md-4 mb-3" style="padding-left: 50px">
+              <label for="">Date of Birth</label>
+          <mat-form-field>
+              <input matInput ngModel #ownerDOB="ngModel" name="ownerDOB" type="date" required>
+              <div class="alert alert-danger" *ngIf="!ownerDOB.valid && ownerDOB.touched">Enter Date of Birth</div>
+            </mat-form-field>
+       </div>
+
+
+  </div>
+<!-- End - NIC, Date of Birth-->
+
+<!-- Start - Contact Number, Email-->
+  <div class="form-row">
+      <div class="col-md-4 mb-3" >
+          <label for="ownerContactNumber">Contact Number</label>
+          <div style="padding-top: 10px">
+              <input  ngModel #ownerContactNumber="ngModel" pattern="\d{10}" type="text" class="form-control" id="ownerContactNumber" name="ownerContactNumber" placeholder="Contact Number" required>
+              <div class="alert alert-danger" *ngIf="!ownerContactNumber.valid && ownerContactNumber.touched">Enter a valid contact number</div>
+          </div>
+      </div>
+      <div class="col-md-8 mb-3" >
+          <label for="ownerEmail">Email</label>
+          <div style="padding-top: 10px">
+              <input ngModel #ownerEmail="ngModel" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" type="text" class="form-control" id="ownerEmail" name="ownerEmail" placeholder="Email" >
+              <div class="alert alert-danger" *ngIf="!ownerEmail.valid && ownerEmail.touched">Enter a valid email address</div>
+          </div>
+      </div>
+  </div>
+<!-- End - Contact Number, Email-->
+</div>
+<!-- End - Owner Information Panel -->
+
+
+<div class="container border border-secondary Info">
+  <p class="font-weight-bold">Enter Restaurant Information</p>
+  <div class="form-group row">
+      <label for="resName" class="col-sm-3 col-form-label">Restaurant Name</label>
+      <div class="col-sm-8">
+        <input ngModel #resName="ngModel" type="email" class="form-control" id="resName" name="resName"placeholder="Restaurant Name" required>
+      </div>
+  </div>
+  <div class="form-group row">
+    <label for="resContact" class="col-sm-3 col-form-label">Contact Number</label>
+    <div class="col-sm-6">
+      <input  ngModel #resContact="ngModel" pattern="\d{10}" type="text" class="form-control" id="resContact" name="resContact" placeholder="Contact Number" required>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="resCity" class="col-sm-3 col-form-label">City</label>
+    <div class="col-sm-6">
+      <input ngModel #resCity="ngModel" type="email" class="form-control" id="resCity" name="resCity" placeholder="City" required>
+    </div>
+  </div>
+  <div class="form-group row">
+      <label for="description" class="col-sm-3 col-form-label">Description</label>
+      <div class="col-sm-8">
+        <textarea  ngModel #description="ngModel" type="text" class="form-control" id="description" name="description" placeholder="Description" ></textarea>
+      </div>
+    </div>
+
+</div>
+
+<div class="container border border-secondary Info">
+  <p class="font-weight-bold">Enter Username & Password</p>
+  <div class="form-group row">
+      <label for="username" class="col-sm-3 col-form-label">Username</label>
+      <div class="col-sm-8">
+        <input ngModel #username="ngModel" type="email" class="form-control" id="username" name="username"placeholder="Username" required>
+      </div>
+  </div>
+  <div class="form-group row">
+      <label for="password" class="col-sm-3 col-form-label">Password</label>
+      <div class="col-sm-8">
+        <input ngModel #password="ngModel" type="password" class="form-control" id="password" name="password" placeholder="Password" required>
+      </div>
+  </div>
+  <div class="form-group row">
+      <label for="confirmPassword" class="col-sm-3 col-form-label">Confirm Password</label>
+      <div class="col-sm-8">
+        <input ngModel #confirmPassword="ngModel" type="password" class="form-control" id="confirmPassword" name="confirmPassword" placeholder="Password" required>
+        <div class="alert alert-danger" *ngIf="!(password.value==confirmPassword.value) && password.touched && confirmPassword.touched">Password Mismatch</div>
+      </div>
+    </div>
+
+</div>
+
+
+<br>
+<div class="form-row" style="margin-left: 100px">
+  <button class="btn btn-success" type="submit" style="margin-left: 250px">Register Customer</button>
+  <button class="btn btn-primary" style="margin-left: 50px; padding-left:42px; padding-right: 42px">Reset</button>
+</div>
+
+<br>
+<br>
+
+</form>
+
+
+</cdk-virtual-scroll-viewport>
+
+
+</div>

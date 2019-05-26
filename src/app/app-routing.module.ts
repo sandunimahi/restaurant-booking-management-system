@@ -1,7 +1,20 @@
+import { LoginComponent } from './auth/login/login.component';
+import { SignupCustomerComponent } from './auth/signup-customer/signup-customer.component';
+import { HomeComponent } from './auth/home/home.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { SignupOwnerComponent } from './auth/signup-owner/signup-owner.component';
 
-const routes: Routes = [];
+const routes: Routes = [
+  {path: '', redirectTo: 'home', pathMatch: 'full'},
+  {path:'home',component:HomeComponent},
+  {path:'signupOwner',component:SignupOwnerComponent},
+  {path:'signupCustomer',component:SignupCustomerComponent},
+  {path:'login',component:LoginComponent},
+  {path:'admin',loadChildren:'./admin/admin.module#AdminModule'},
+
+
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

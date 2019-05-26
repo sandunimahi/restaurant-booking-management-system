@@ -1,5 +1,4 @@
-import { CommonModule } from '@angular/common';
-
+import { AdminRoutingModule } from './admin-routing.module';
 import {
   MatAutocompleteModule,
   MatBadgeModule,
@@ -49,31 +48,22 @@ import {ScrollingModule} from '@angular/cdk/scrolling';
 import {CdkStepperModule} from '@angular/cdk/stepper';
 import {CdkTableModule} from '@angular/cdk/table';
 import {CdkTreeModule} from '@angular/cdk/tree';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { SignupOwnerComponent } from './auth/signup-owner/signup-owner.component';
-import { HomeComponent } from './auth/home/home.component';
-import { SignupCustomerComponent } from './auth/signup-customer/signup-customer.component';
-import { HttpClientModule } from '@angular/common/http';
-import { LoginComponent } from './auth/login/login.component';
+import { CommonModule } from '@angular/common';
+import { AdminComponent } from './admin/admin.component';
+import { AdminSidebarComponent } from './admin-sidebar/admin-sidebar.component';
+import { AdminManageRestaurantComponent } from './admin-manage-restaurant/admin-manage-restaurant.component';
+import { AdminManageManagerComponent } from './admin-manage-manager/admin-manage-manager.component';
+import { AdminManagePromotionsComponent } from './admin-manage-promotions/admin-manage-promotions.component';
+import { AdminManageMealsComponent } from './admin-manage-meals/admin-manage-meals.component';
+import { AdminManageTablesComponent } from './admin-manage-tables/admin-manage-tables.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    SignupOwnerComponent,
-    HomeComponent,
-    SignupCustomerComponent,
-    LoginComponent
-  ],
   imports: [
-    CommonModule,
-    AppRoutingModule,
-   MatAutocompleteModule,
+  AdminRoutingModule,
+  CommonModule,
+  MatAutocompleteModule,
   MatBadgeModule,
   MatBottomSheetModule,
   MatButtonModule,
@@ -110,18 +100,29 @@ import { LoginComponent } from './auth/login/login.component';
   MatTreeModule,
   MatFormFieldModule,
   CdkStepperModule,
-    CdkTableModule,
-    CdkTreeModule,
-    A11yModule,
-    DragDropModule,
-    PortalModule,
-    ScrollingModule,
-    FormsModule,
-    BrowserAnimationsModule,
-    HttpClientModule
+  CdkTableModule,
+  CdkTreeModule,
+  A11yModule,
+  DragDropModule,
+  PortalModule,
+  ScrollingModule,
+  FormsModule
 
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  declarations: [
+
+ AdminComponent,
+
+ AdminSidebarComponent,
+
+ AdminManageRestaurantComponent,
+
+ AdminManageManagerComponent,
+
+ AdminManagePromotionsComponent,
+
+ AdminManageMealsComponent,
+
+ AdminManageTablesComponent]
 })
-export class AppModule { }
+export class AdminModule{}

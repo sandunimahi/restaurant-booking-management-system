@@ -1,0 +1,26 @@
+.customerInfo{
+  padding-top: 10px;
+  padding-right: 50px;
+  padding-bottom: 15px;
+  padding-left: 25px;
+  width: 750px;
+
+  margin-top: 20px;
+  /* margin-bottom: 0px; */
+  border-right: 100px;
+  margin-left:170px;
+}
+
+
+.example-viewport {
+  height: 1000px;
+  width: 1000px;
+  /* margin-top: 10px; */
+  /* border: 1px solid black; */
+
+}
+
+.mat-radio-button ~ .mat-radio-button {
+  margin-left: 20px;
+}
+
