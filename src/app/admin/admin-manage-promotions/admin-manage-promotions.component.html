@@ -1,3 +1,66 @@
-<p>
-  admin-manage-promotions works!
-</p>
+<mat-toolbar color="primary"> Manage Promotions </mat-toolbar>
+<mat-tab-group>
+<mat-tab label="Add Promotions">
+
+    <div class="container scroll" style="border-top: 1000px">
+        <cdk-virtual-scroll-viewport itemSize="50" class="example-viewport">
+
+      <form  >
+      <!-- Start - Personal Information Panel -->
+      <div class="container border border-secondary customerInfo">
+        <p class="font-weight-bold">Manage Promotion Information</p>
+        <!-- Start - Promotion Description -->
+            <div class="form-row">
+              <div class="col-md-6 mb-3">
+                <label for="promotionDescription">Promotion Description</label>
+                <textarea ngModel #promotionDescription="ngModel" pattern="[a-zA-Z\s]+" type="text" class="form-control" id="promotionDescription" name="promotionDescription" placeholder="Promotion Description" required>
+                </textarea>
+                <div class="alert alert-danger" *ngIf="!promotionDescription.valid && promotionDescription.touched">Enter Valid Promotion Description</div>
+              </div>
+
+
+
+
+            </div>
+      <!-- End - Description-->
+
+      <!-- Start - Address, City, District -->
+        <div class="form-row" style="padding-bottom: 10px">
+          <div class="col-md-9 mb-3">
+            <label for="managerAddress">Address</label>
+            <input ngModel #managerAddress="ngModel" type="text" class="form-control" id="managerAddress" name="managerAddress" placeholder="Address" required>
+            <div class="alert alert-danger" *ngIf="!managerAddress.valid && managerAddress.touched">Enter an address</div>
+          </div>
+          <br>
+
+          <div class="col-md-6 mb-3">
+              <label for="promotionCode">Promotion Code</label>
+              <input ngModel #promotionCode="ngModel"  type="text" class="form-control" id="promotionCode" name="promotionCode" placeholder="Promotion Code" required>
+              <div class="alert alert-danger" *ngIf="!promotionCode.valid && promotionCode.touched">Enter Valid Promotion Code</div>
+            </div>
+
+
+          <div class="form-row" style="margin-left: 100px">
+            <button class="btn btn-success" type="submit" style="margin-left: 250px">Register Promotion</button>
+            <button class="btn btn-primary" style="margin-left: 50px; padding-left:42px; padding-right: 42px">Reset</button>
+          </div>
+          <br>
+          <br>
+          </div></div>
+
+    </form>
+
+
+  </cdk-virtual-scroll-viewport>
+
+
+  </div>
+
+      </mat-tab>
+
+
+
+
+<mat-tab label="Update Promotions"> show manager info and delete manager options
+</mat-tab>
+</mat-tab-group>

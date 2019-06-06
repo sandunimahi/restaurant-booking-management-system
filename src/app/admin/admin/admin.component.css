@@ -4,7 +4,7 @@ mat-grid-tile {
 }
 
 .blue{
-  background: #00BCD4;
+  background: rgb(134, 0, 212);
   /* border: 1px solid #000000; */
   display: flex;
   flex-wrap: wrap;

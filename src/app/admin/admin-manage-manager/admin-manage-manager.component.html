@@ -1,3 +1,146 @@
-<p>
-  admin-manage-manager works!
-</p>
+<!-- <div class="container row">
+  <div class="list-group col" style="padding-top: 100px; padding-left: 300px">
+      <a class="btn btn-lg btn-info" href="addManager">Add a Restaurant Manager</a>
+      <br>
+      <a class="btn btn-lg btn-info" href="updateManagerInfo">Update Manager Info</a>
+      <br>
+      <a class="btn btn-lg btn-info" href="deleteManager">Delete Manager</a>
+  </div>
+
+</div> -->
+<mat-toolbar color="primary"> Manage Manager </mat-toolbar>
+<mat-tab-group>
+  <mat-tab label="Add Manager">
+      <div class="container scroll" style="border-top: 1000px">
+          <cdk-virtual-scroll-viewport itemSize="50" class="example-viewport">
+
+        <form  >
+        <!-- Start - Personal Information Panel -->
+        <div class="container border border-secondary customerInfo">
+          <p class="font-weight-bold">Manager Personal Information</p>
+          <!-- Start - First Name, Last Name -->
+              <div class="form-row">
+                <div class="col-md-6 mb-3">
+                  <label for="managerFirstName">First name</label>
+                  <input ngModel #managerFirstName="ngModel" pattern="[a-zA-Z\s]+" type="text" class="form-control" id="managerFirstName" name="managerFirstName" placeholder="First name" required>
+                  <div class="alert alert-danger" *ngIf="!managerFirstName.valid && managerFirstName.touched">Enter Valid First Name</div>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                  <label for="managerLastName">Last name</label>
+                  <input ngModel #managerLastName="ngModel" pattern="[a-zA-Z\s]+" type="text" class="form-control" id="managerLastName" name="managerLastName" placeholder="Last name" required>
+                  <div class="alert alert-danger" *ngIf="!managerLastName.valid && managerLastName.touched">Enter Valid Last Name</div>
+                </div>
+
+
+              </div>
+        <!-- End - First Name, Last Name, Gender -->
+              <div calss="form-row">
+                  <div class="col-md-6 mb-3">
+                      <label style="margin-left: -18px">Gender</label>
+                      <div style="padding-top: 6px">
+                        <mat-radio-group ngModel #gender="ngModel" name="gender" required>
+                            <mat-radio-button value="Male">Male</mat-radio-button>
+                            <mat-radio-button value="Female">Female</mat-radio-button>
+                            <mat-radio-button value="Other">Other</mat-radio-button>
+                         </mat-radio-group>
+                         <div class="alert alert-danger" *ngIf="!gender.valid && gender.touched">Please select gender </div>
+                      </div>
+                    </div>
+              </div>
+        <!-- Start - Address, City, District -->
+          <div class="form-row" style="padding-bottom: 10px">
+            <div class="col-md-9 mb-3">
+              <label for="managerAddress">Address</label>
+              <input ngModel #managerAddress="ngModel" type="text" class="form-control" id="managerAddress" name="managerAddress" placeholder="Address" required>
+              <div class="alert alert-danger" *ngIf="!managerAddress.valid && managerAddress.touched">Enter an address</div>
+            </div>
+        </div>
+        <!-- End - Address, City, District -->
+
+        <!-- Start - NIC, Date of Birth-->
+          <div class="form-row">
+              <div class="col-md-4 mb-3" >
+                  <label for="managerNIC">NIC</label>
+                  <div style="padding-top: 10px">
+                     <input ngModel #managerNIC="ngModel" pattern="([0-9]{9}[x|X|v|V]|[0-9]{12})$"type="text" class="form-control" id="managerNIC" name="managerNIC" placeholder="NIC" >
+                     <div class="alert alert-danger" *ngIf="!managerNIC.valid && managerNIC.touched">Enter Valid NIC</div>
+                  </div>
+              </div>
+
+                <div class="col-md-4 mb-3" style="padding-left: 50px">
+                      <label for="">Date of Birth</label>
+                  <mat-form-field>
+                      <input matInput ngModel #managerDOB="ngModel" name="managerDOB" type="date" required>
+                      <div class="alert alert-danger" *ngIf="!managerDOB.valid && managerDOB.touched">Enter Date of Birth</div>
+                    </mat-form-field>
+               </div>
+
+
+          </div>
+        <!-- End - NIC, Date of Birth-->
+
+        <!-- Start - Contact Number, Email-->
+          <div class="form-row">
+              <div class="col-md-4 mb-3" >
+                  <label for="managerContactNumber">Contact Number</label>
+                  <div style="padding-top: 10px">
+                      <input  ngModel #managerContactNumber="ngModel" pattern="\d{10}" type="text" class="form-control" id="managerContactNumber" name="managerContactNumber" placeholder="Contact Number" required>
+                      <div class="alert alert-danger" *ngIf="!managerContactNumber.valid && managerContactNumber.touched">Enter a valid contact number</div>
+                  </div>
+              </div>
+              <div class="col-md-8 mb-3" >
+                  <label for="managerEmail">Email</label>
+                  <div style="padding-top: 10px">
+                      <input ngModel #managerEmail="ngModel" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" type="text" class="form-control" id="managerEmail" name="managerEmail" placeholder="Email" >
+                      <div class="alert alert-danger" *ngIf="!managerEmail.valid && managerEmail.touched">Enter a valid email address</div>
+                  </div>
+              </div>
+          </div>
+        <!-- End - Contact Number, Email-->
+        </div>
+        <!-- End - Manager Information Panel -->
+        <div class="container border border-secondary customerInfo">
+          <p class="font-weight-bold">Enter Username & Password</p>
+          <div class="form-group row">
+              <label for="username" class="col-sm-3 col-form-label">Username</label>
+              <div class="col-sm-8">
+                <input ngModel #username="ngModel" type="email" class="form-control" id="username" name="username"placeholder="Username" required>
+              </div>
+          </div>
+          <div class="form-group row">
+              <label for="password" class="col-sm-3 col-form-label">Password</label>
+              <div class="col-sm-8">
+                <input ngModel #password="ngModel" type="password" class="form-control" id="password" name="password" placeholder="Password" required>
+              </div>
+          </div>
+          <div class="form-group row">
+              <label for="confirmPassword" class="col-sm-3 col-form-label">Confirm Password</label>
+              <div class="col-sm-8">
+                <input ngModel #confirmPassword="ngModel" type="password" class="form-control" id="confirmPassword" name="confirmPassword" placeholder="Confirm Password" required>
+                <div class="alert alert-danger" *ngIf="!(password.value==confirmPassword.value) && password.touched && confirmPassword.touched">Password Mismatch</div>
+              </div>
+            </div>
+
+        </div>
+        <br>
+        <div class="form-row" style="margin-left: 100px">
+          <button class="btn btn-success" type="submit" style="margin-left: 250px">Register Manager</button>
+          <button class="btn btn-primary" style="margin-left: 50px; padding-left:42px; padding-right: 42px">Reset</button>
+        </div>
+
+        <br>
+        <br>
+
+        </form>
+
+
+        </cdk-virtual-scroll-viewport>
+
+
+        </div>
+
+            </mat-tab>
+  <mat-tab label="Update Manager Info"> show manager info and delete manager options
+     </mat-tab>
+</mat-tab-group>

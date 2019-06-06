@@ -3,7 +3,7 @@ const router=express.Router();
 const User=require('../models/user');
 const Customer=require('../models/customer');
 const Owner=require('../models/owner');
-
+const jwt=require('jsonwebtoken');
 
 
 //Adding New Customer
@@ -102,5 +102,48 @@ router.post("/api/owner/createOwner",(req,res,next) => {
       })
     })
 });
+
+router.post("/api/user/login",(req,res,next) => {
+  console.log("This is login route")
+  console.log(req.body);
+
+    let fetchedUser;
+    User.findOne({username:req.body.username,role:req.body.role})
+     .then(user=>{
+      if(!user)
+      {
+         console.log("User not found");
+          return res.status(401).json({
+          message: "Authentication Failed"
+        });
+      }
+      fetchedUser=user;
+      if(user.password==req.body.password)
+      {
+        const token=jwt.sign({username: user.username,role:user.role,userId:user._id},"This is the secret text");
+        console.log("Password Matches");
+        console.log(user);
+        res.status(200).json({
+          token:token,
+          username: user.username,
+          role:user.role,
+          userID:user.id
+        });
+      }
+      else
+      {
+        return res.status(401).json({
+          message: "Authentication failed"
+        });
+      }
+     })
+     .catch(err => {
+
+    })
+
+
+    res.status(200);
+});
+
 
 module.exports=router;
