@@ -8,5 +8,8 @@ import { Router } from "@angular/router";
 export class AdminService{
 
   constructor(private http: HttpClient, private router: Router) {}
+  registerManager(manager:any){
 
+    return this.http.post<{userAdded:boolean}>("http://localhost:3000/api/manager/createManager",manager);
+  }
 }

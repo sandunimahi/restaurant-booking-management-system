@@ -58,6 +58,7 @@ import { AdminManageManagerComponent } from './admin-manage-manager/admin-manage
 import { AdminManagePromotionsComponent } from './admin-manage-promotions/admin-manage-promotions.component';
 import { AdminManageMealsComponent } from './admin-manage-meals/admin-manage-meals.component';
 import { AdminManageTablesComponent } from './admin-manage-tables/admin-manage-tables.component';
+import { AdminUpdateProfileComponent } from './admin-update-profile/admin-update-profile.component';
 
 @NgModule({
   imports: [
@@ -123,6 +124,8 @@ import { AdminManageTablesComponent } from './admin-manage-tables/admin-manage-t
 
  AdminManageMealsComponent,
 
- AdminManageTablesComponent]
+ AdminManageTablesComponent,
+
+ AdminUpdateProfileComponent]
 })
 export class AdminModule{}

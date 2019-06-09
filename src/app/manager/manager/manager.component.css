@@ -1,0 +1,25 @@
+/* mat-grid-tile {
+  /* background: lightblue;
+  padding: 0px 0px 0px 0px;
+}
+
+.blue{
+  background: rgb(134, 0, 212);
+  /* border: 1px solid #000000;
+  display: flex;
+  flex-wrap: wrap;
+  align-content:flex-end;
+}
+ */
+mat-grid-tile {
+  /* background: lightblue; */
+  padding: 0px 0px 0px 0px;
+}
+
+.blue{
+  background: rgb(96, 20, 167);
+  /* border: 1px solid #000000; */
+  display: flex;
+  flex-wrap: wrap;
+  align-content:flex-end;
+}

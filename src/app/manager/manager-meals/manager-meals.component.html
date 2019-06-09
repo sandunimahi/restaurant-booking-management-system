@@ -1,0 +1,194 @@
+<mat-toolbar color="primary"> Manage Meals </mat-toolbar>
+<mat-tab-group>
+  <mat-tab label="Update Meals">
+    <div class="container scroll" style="border-top: 1000px">
+      <cdk-virtual-scroll-viewport itemSize="50" class="example-viewport">
+
+          <div class="container customerInfo" style="padding-top: 5px">
+              <div class="row">
+
+                <!-- Start -->
+
+                    <div class="col-6 border border-secondary" style="padding-top: 10px">
+                    <form >
+                        <p class="font-weight-bold">Add Menu</p>
+
+
+                      <div class="form-group row">
+                          <label for="meal" class="col-sm-4 col-form-label">Meal</label>
+                          <div class="col-sm-8">
+                            <input type="text" ngModel #meal="ngModel" class="form-control" id="meal"  name="meal" placeholder="Eg- egg rice, pizza,etc " required>
+                            <div class="alert alert-danger" *ngIf="!meal.valid && meal.touched">Invalid</div>
+                          </div>
+                      </div>
+
+                      <div class="form-group row">
+                          <label for="mealDescription" class="col-sm-4 col-form-label">Meal Description</label>
+                          <div class="col-sm-8">
+                            <textarea type="text" ngModel #mealDescription="ngModel" class="form-control" id="mealDescription"  name="mealDescription" placeholder="Meal Description" required></textarea>
+                            <div class="alert alert-danger" *ngIf="!mealDescription.valid && mealDescription.touched">Invalid</div>
+                          </div>
+                      </div>
+
+                      <div class="form-group row">
+                          <label for="mealPrice" class="col-sm-4 col-form-label">Price</label>
+                          <div class="col-sm-8">
+                            <input type="currency" ngModel #mealPrice="ngModel" class="form-control" id="mealPrice"  name="mealPrice" placeholder="Price of the Meal (Rs.)" required>
+                            <div class="alert alert-danger" *ngIf="!mealPrice.valid && mealPrice.touched">Invalid</div>
+                          </div>
+                      </div>
+
+                      <div class="form-group row" style="margin-left: 150px; margin-top: 0px;">
+                          <button type="submit" class="btn btn-success">Add Meal</button>
+                      </div>
+                  </form>
+                  </div>
+                  <div class="col-6 border border-secondary" style="padding-top: 10px">
+                      <p class="font-weight-bold">Meal Details</p>
+                      <div class="form-group row">
+                          <table class="table table-striped">
+                            <thead>
+                              <tr>
+                                <th scope="col">Meal</th>
+                                <!-- <th scope="col">Time</th> -->
+                                <th scope="col">Price</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr *ngFor="let meal of meal">
+                                <td>{{meal.name}}</td>
+                                <td>{{meal.price}}</td>
+                                <!-- <td>{{meal.status}}</td> -->
+                              </tr>
+                            </tbody>
+                          </table>
+                          <br>
+                          <br>
+                          <div class="form-group row" style="margin-left: 150px; margin-top: 0px;">
+                           <a class="btn btn-danger" > Delete Meal</a>
+                          </div>
+                        </div>
+                  </div>
+                </div>
+
+
+</div>
+</cdk-virtual-scroll-viewport>
+</div>
+</mat-tab>
+<!--End Add Meal-->
+
+<!--Order Meal-->
+  <mat-tab label="Order Meals">
+      <div class="container scroll" style="border-top: 1000px">
+        <cdk-virtual-scroll-viewport itemSize="50" class="example-viewport">
+
+            <div class="container customerInfo" style="padding-top: 5px">
+                <div class="row">
+
+            <div class="col-6 border border-secondary" style="padding-top: 10px">
+                <p class="font-weight-bold">Order Meals</p>
+                <div class="form-group row">
+                    <table class="table table-striped">
+                      <thead>
+                        <tr>
+                          <th scope="col">Meal</th>
+                          <th scope="col">Price</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let meal of meal">
+                          <td>{{meal.name}}</td>
+                          <td>{{meal.price}}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <br>
+                    <br>
+                  </div>
+            </div>
+
+            <div class="col-6 border border-secondary" style="padding-top: 10px">
+                <form >
+                    <p class="font-weight-bold">Order Meal</p>
+
+                  <div class="form-group row">
+                      <label for="mealName" class="col-sm-4 col-form-label">Meal Name</label>
+                      <div class="col-sm-8">
+                        <input type="text" ngModel #mealName="ngModel" class="form-control" id="mealName"  name="mealName" placeholder="Select a meal" required>
+                        <div class="alert alert-danger" *ngIf="!mealName.valid && mealName.touched">Invalid</div>
+                      </div>
+                  </div>
+
+                  <div class="form-group row">
+                      <label for="orderQuantity" class="col-sm-4 col-form-label">Quantity</label>
+                      <div class="col-sm-8">
+                        <input type="number" ngModel #orderQuantity="ngModel" class="form-control" id="orderQuantity"  name="orderQuantity" placeholder="Order Quantity" required>
+                        <div class="alert alert-danger" *ngIf="!orderQuantity.valid && orderQuantity.touched">Invalid</div>
+                      </div>
+                  </div>
+
+                  <div class="form-group row">
+                      <label for="orderDate" class="col-sm-4 col-form-label">Date</label>
+                      <div class="col-sm-8">
+                        <input type="date" ngModel #orderDate="ngModel" class="form-control" id="orderDate"  name="orderDate" placeholder="Order Date" required>
+                        <div class="alert alert-danger" *ngIf="!orderDate.valid && orderDate.touched">Invalid</div>
+                      </div>
+                  </div>
+
+                  <div class="form-group row">
+                      <label for="orderTime" class="col-sm-4 col-form-label">Order Time</label>
+                      <div class="col-sm-8">
+                        <input type="time" ngModel #orderTime="ngModel" class="form-control" id="orderTime"  name="orderTime" placeholder="Order Time" required>
+                        <div class="alert alert-danger" *ngIf="!orderTime.valid && orderTime.touched">Invalid</div>
+                      </div>
+                  </div>
+
+                  <div class="form-group row">
+                      <label for="dineInOrTakeAway" class="col-sm-4 col-form-label">Dine in/Take Away</label>
+                      <div class="col-sm-8">
+                          <div style="padding-top: 3px">
+                            <mat-radio-group ngModel #dineInOrTakeAway="ngModel" name="dineInOrTakeAway" required>
+                                <mat-radio-button value="Dine In">Dine In</mat-radio-button>
+                                <mat-radio-button value="Take Away">Take Away</mat-radio-button>
+                            </mat-radio-group>
+                             <div class="alert alert-danger" *ngIf="!dineInOrTakeAway.valid && dineInOrTakeAway.touched">Please select the above </div>
+                          </div>
+                        </div>
+                  </div>
+
+                  <div class="form-group row">
+                      <label for="additionalDetails" class="col-sm-4 col-form-label">Additional Details</label>
+                      <div class="col-sm-8">
+                        <textarea type="text" ngModel #additionalDetails="ngModel" class="form-control" id="additionalDetails"  name="additionalDetails" placeholder="Additional Details"></textarea>
+                        <div class="alert alert-danger" *ngIf="!additionalDetails.valid && additionalDetails.touched">Invalid</div>
+                      </div>
+                  </div>
+
+                  <div class="form-group row" style="margin-left: 150px; margin-top: 0px;">
+                      <button type="submit" class="btn btn-success">Add Order</button>
+                    </div>
+                  </form>
+              </div>
+              </div>
+            </div>
+          </cdk-virtual-scroll-viewport>
+        </div>
+    </mat-tab>
+
+<!--End Order-->
+
+<!--Upcoming Order-->
+  <mat-tab label="Upcoming Meals">
+      <div class="container scroll" style="border-top: 1000px">
+        <cdk-virtual-scroll-viewport itemSize="50" class="example-viewport">
+
+
+
+
+
+        </cdk-virtual-scroll-viewport>
+      </div>
+  </mat-tab>
+  <!--End Upcoming Order-->
+  </mat-tab-group>

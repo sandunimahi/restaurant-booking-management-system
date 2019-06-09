@@ -1,3 +1,69 @@
-<p>
-  admin-manage-tables works!
-</p>
+<!--<mat-toolbar color="primary"> Manage Tables </mat-toolbar>-->
+
+<div class="container customerInfo" style="padding-top: 5px">
+    <div class="row">
+
+      <!-- Start  -->
+
+          <div class="col-6 border border-secondary" style="padding-top: 10px">
+          <form >
+              <p class="font-weight-bold">Add Tables</p>
+
+
+            <div class="form-group row">
+                <label for="tableType" class="col-sm-4 col-form-label">Table Type</label>
+                <div class="col-sm-8">
+                  <input type="text" ngModel #tableType="ngModel" class="form-control" id="tableType"  name="tableType" placeholder="Eg- Indoor A/C, Luxoury,etc " required>
+                  <div class="alert alert-danger" *ngIf="!tableType.valid && tableType.touched">Invalid</div>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="tableDescription" class="col-sm-4 col-form-label">Table Description</label>
+                <div class="col-sm-8">
+                  <textarea type="text" ngModel #tableDescription="ngModel" class="form-control" id="tableDescription"  name="tableDescription" placeholder="Table Description" required></textarea>
+                  <div class="alert alert-danger" *ngIf="!tableDescription.valid && tableDescription.touched">Invalid</div>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="numOfTables" class="col-sm-4 col-form-label">Num Of Tables</label>
+                <div class="col-sm-8">
+                  <input type="number" ngModel #numOfTables="ngModel" class="form-control" id="numOfTables"  name="numOfTables" placeholder="Number of Tables" required>
+                  <div class="alert alert-danger" *ngIf="!numOfTables.valid && numOfTables.touched">Invalid</div>
+                </div>
+            </div>
+
+            <div class="form-group row" style="margin-left: 150px; margin-top: 0px;">
+                <button type="submit" class="btn btn-success">Add Tables</button>
+            </div>
+        </form>
+        </div>
+        <div class="col-6 border border-secondary" style="padding-top: 10px">
+            <p class="font-weight-bold">Table Availability</p>
+            <div class="form-group row">
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th scope="col">Table Type</th>
+                      <!-- <th scope="col">Time</th> -->
+                      <th scope="col">Availability</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let table of table">
+                      <td>{{table.type}}</td>
+                      <td>{{table.status}}</td>
+                      <!-- <td>{{room.status}}</td> -->
+                    </tr>
+                  </tbody>
+                </table>
+                <br>
+                <br>
+                <div class="form-group row" style="margin-left: 150px; margin-top: 0px;">
+                 <a class="btn btn-danger" > Delete Table</a>
+                </div>
+              </div>
+        </div>
+      </div>
+      </div>

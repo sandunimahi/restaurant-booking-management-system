@@ -12,6 +12,7 @@ const routes: Routes = [
   {path:'signupCustomer',component:SignupCustomerComponent},
   {path:'login',component:LoginComponent},
   {path:'admin',loadChildren:'./admin/admin.module#AdminModule'},
+  {path:'manager',loadChildren:'./manager/manager.module#ManagerModule'},
 
 
 ];
