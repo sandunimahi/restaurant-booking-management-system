@@ -1,0 +1,63 @@
+.example-viewport {
+  height: 500px;
+  width: 1000px;
+  /* margin-top: 10px; */
+  /* border: 1px solid black; */
+
+}
+
+.example-viewport1 {
+  height: 500px;
+  width: 800px;
+  padding-left: 100px;
+  /* margin-top: 10px; */
+  /* border: 1px solid black; */
+
+}
+.mat-radio-button ~ .mat-radio-button {
+  margin-left: 16px;
+}
+
+
+::ng-deep .error{
+  /* 4BB543 */
+  background-color: #FF9494;
+   transition-property: opacity, bottom, left, right, width, margin, border-radius;
+  transition-duration: 0.5s;
+  transition-timing-function: ease;
+  font-family: RobotoDraft;
+  font-size: 15px;
+  min-height: 16px;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  line-height: 22px;
+  padding: 18px 24px;
+  bottom: 400px;
+  width: 900px;
+  opacity: 0;
+
+}
+
+::ng-deep .success{
+  background-color: #4BB543;
+   transition-property: opacity, bottom, left, right, width, margin, border-radius;
+  transition-duration: 0.5s;
+  transition-timing-function: ease;
+  font-family: RobotoDraft;
+  font-size: 15px;
+  min-height: 16px;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  line-height: 22px;
+  padding: 18px 24px;
+  bottom: 400px;
+  width: 900px;
+  opacity: 0;
+
+}

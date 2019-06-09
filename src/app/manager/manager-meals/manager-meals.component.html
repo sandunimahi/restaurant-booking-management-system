@@ -182,13 +182,49 @@
   <mat-tab label="Upcoming Meals">
       <div class="container scroll" style="border-top: 1000px">
         <cdk-virtual-scroll-viewport itemSize="50" class="example-viewport">
+            <div class="container customerInfo" style="padding-top: 5px">
+                <div class="row">
 
+            <div  style="padding-top: 10px">
+                <p class="font-weight-bold">Order Meals</p>
+                <div class="form-group row">
+                    <table class="table table-striped">
+                      <thead>
+                        <tr>
+                          <th scope="col">Meal Name</th>
+                          <th scope="col">Quantity</th>
+                          <th scope="col">Date</th>
+                          <th scope="col">Time</th>
+                          <th scope="col">Dine In/Take Away</th>
+                          <th scope="col">Additional Details</th>
+                          <th scope="col">Price</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let meal of meal">
+                          <td>{{meal.mealName}}</td>
+                          <td>{{meal.orderQuantity}}</td>
+                          <td>{{meal.orderDate}}</td>
+                          <td>{{meal.orderTime}}</td>
+                          <td>{{meal.dineInOrTakeAway}}</td>
+                          <td>{{meal.additionalDetails}}</td>
+                          <td>{{meal.price}}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <br>
+                    <br>
+                    <div class="form-group row" style="margin-left: 150px; margin-top: 0px;">
+                        <a class="btn btn-danger" > Delete Order</a>
+                       </div>
+                  </div>
+                  </div>
+            </div>
+            </div>
+            </cdk-virtual-scroll-viewport>
+            </div>
+            </mat-tab>
 
-
-
-
-        </cdk-virtual-scroll-viewport>
-      </div>
-  </mat-tab>
   <!--End Upcoming Order-->
   </mat-tab-group>
+

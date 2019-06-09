@@ -1,3 +1,39 @@
-<p>
-  manager-tables works!
-</p>
+<div class="container" style="width:1080px">
+    <mat-horizontal-stepper>
+      <mat-step label="View table">
+         <div class="" style="padding-top:20px; padding-left: 10px">
+          <cdk-virtual-scroll-viewport itemSize="50" class="example-viewport">
+              <div class="form-group row" style="padding-left: 250px">
+                  <div class="form-group row">
+                      <table class="table table-striped">
+                        <thead>
+                          <tr>
+                            <th scope="col">Table Type</th>
+                            <!-- <th scope="col">Time</th> -->
+                            <th scope="col">Availability</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let table of table">
+                            <td>{{table.type}}</td>
+                            <td>{{table.status}}</td>
+                            <!-- <td>{{room.status}}</td> -->
+                          </tr>
+                        </tbody>
+                      </table>
+
+                <label for="appointmentDate" class="col-sm-3 col-form-label" style="padding-top: 20px">Select Date</label>
+                <div class="col-sm-8">
+                    <mat-form-field >
+                        <input matInput ngModel #appointmentDate="ngModel" name="appointmentDate"[min]="" [max]="" [matDatepicker]="picker" placeholder="Choose a date">
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                      </mat-form-field>
+                      <!-- <button class="btn btn-primary" style="margin-left: 70px">Search</button> -->
+                </div>
+              </div>
+            </cdk-virtual-scroll-viewport>
+            </div>
+            </mat-step>
+            </mat-horizontal-stepper>
+            </div>
