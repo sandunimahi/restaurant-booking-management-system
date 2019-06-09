@@ -81,7 +81,8 @@ router.post("/api/owner/createOwner",(req,res,next) => {
           name:req.body.restaurantName,
           contactNumber:req.body.restaurantcontactNumber,
           city:req.body.restaurantCity,
-          description:req.body.description
+          description:req.body.description,
+          managerID:null
         }
       });
       owner.save().then(addedOwner => {
@@ -117,6 +118,7 @@ router.post("/api/manager/createManager",(req,res,next) => {
       console.log(addedeUser.id);
       const manager=new Manager({
         userID: addedeUser.id,
+        ownerID:req.body.userID,
         name:{
         firstname:req.body.firstname,
         lastname:req.body.lastname
@@ -131,6 +133,9 @@ router.post("/api/manager/createManager",(req,res,next) => {
       });
       manager.save().then(addedOwner => {
         console.log(addedOwner)
+        Owner.updateOne({'userID':Number(req.body.userID)},{$set:{'restaurant.managerID':addedeUser.id}}).then(response => {
+          console.log(response);
+        });
         res.status(201).json({
           userAdded:true
         });
@@ -192,5 +197,55 @@ router.post("/api/user/login",(req,res,next) => {
     res.status(200);
 });
 
+//Getting manager details - Update Manager
+router.get("/api/manager/getManagerDetails/:id",(req,res,next) => {
+  Manager.find({'ownerID':req.params.id}).then(response=>{
+    res.status(200).json({
+      manager:response
+    });
+  }).catch(err => {
+    console.log("Error: "+err);
+  })
+});
+
+//Updating Manager
+router.post("/api/manager/updateManager",(req,res,next) => {
+  Manager.updateOne({'userID':Number(req.body.userID)},{$set:{'name.firstname':req.body.firstname,'name.lastname':req.body.lastname,'address':req.body.address,'contactNumber':req.body.contactNumber,'email':req.body.email}}).then(response => {
+    res.status(200).json({
+    });
+  }).catch(err => {
+    console.log("Error: "+err);
+  })
+});
+
+//Getting admin information
+router.get("/api/admin/getInfo/:id",(req,res,next) => {
+  console.log(req.params.id)
+  User.findOne({'id':Number(req.params.id)}).then(response=>{
+    res.status(200).json({
+      owner:response
+    });
+  }).catch(err => {
+    console.log("Error: "+err);
+  })
+});
+
+//Deleting manager
+router.post("/api/manager/delete",(req,res,next) => {
+  console.log(req.body)
+  Manager.deleteOne({'userID':req.body.managerID}).then(response=>{
+    console.log(response);
+    Owner.updateOne({'userID':Number(req.body.userID)},{$set:{'restaurant.managerID':null}}).then(response1 => {
+      console.log(response1);
+      User.deleteOne({'id':req.body.managerID}).then(response2=>{});
+      res.status(200).json({
+      });
+    }).catch(err => {
+      console.log("Error: "+err);
+    })
+  }).catch(err => {
+    console.log("Error: "+err);
+  })
+});
 
 module.exports=router;

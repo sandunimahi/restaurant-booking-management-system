@@ -51,8 +51,8 @@ export class AuthService{
         this.isAuthenticated = true;
 
        console.log(response.role);
-       if(response.role=="Admin"){
-         this.router.navigate(["/admin"]);
+       if(response.role=="Owner"){
+         this.router.navigate(["/admin/"+response.userID]);
         }
         else if (response.role=="Manager"){
           this.router.navigate(["/manager"]);

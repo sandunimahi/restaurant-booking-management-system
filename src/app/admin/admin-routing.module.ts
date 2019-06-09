@@ -10,7 +10,7 @@ import { AdminUpdateProfileComponent } from './admin-update-profile/admin-update
 
 const adminRoutes: Routes = [
   {
-    path: '',
+    path: ':id',
     component:AdminComponent,
     children: [
        { path: 'manageRestaurant', component: AdminManageRestaurantComponent },

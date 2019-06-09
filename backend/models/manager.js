@@ -2,6 +2,7 @@ const mongoose=require('mongoose');
 
 const managerSchema=mongoose.Schema({
   userID: Number,
+  ownerID:Number,
   name:{
   firstname:String,
   lastname:String
@@ -12,7 +13,7 @@ const managerSchema=mongoose.Schema({
   city:String,
   nic:String,
   contactNumber:Number,
-  email:String,
+  email:String
 });
 
 module.exports=mongoose.model("Manager", managerSchema);

@@ -17,7 +17,8 @@ const ownerSchema=mongoose.Schema({
     name:String,
     contactNumber:Number,
     city:String,
-    description:String
+    description:String,
+    managerID:Number
   }
 });
 

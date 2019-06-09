@@ -1,3 +1,4 @@
+import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminComponent implements OnInit {
 
-  constructor() { }
-
+  constructor(public activate:ActivatedRoute) { }
+  currentUserID;
   ngOnInit() {
+    this.currentUserID=this.activate.snapshot.params['id'];
+    console.log(this.currentUserID);
+
   }
 
 }
