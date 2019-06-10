@@ -55,6 +55,12 @@ import { CustomerComponent } from './customer/customer.component';
 import { CustomerSidebarComponent } from './customer-sidebar/customer-sidebar.component';
 import { CustomerHomeComponent } from './customer-home/customer-home.component';
 import { CustomerRoutingModule } from './customer-routing.module';
+import { CustomerMealsComponent } from './customer-meals/customer-meals.component';
+import { CustomerViewMealsComponent } from './customer-view-meals/customer-view-meals.component';
+import { CustomerOrderMealsComponent } from './customer-order-meals/customer-order-meals.component';
+import { CustomerUpdateProfileComponent } from './customer-update-profile/customer-update-profile.component';
+import { CustomerBookedTablesComponent } from './customer-booked-tables/customer-booked-tables.component';
+import { CustomerRestaurantsComponent } from './customer-restaurants/customer-restaurants.component';
 
 @NgModule({
   imports: [
@@ -112,6 +118,18 @@ import { CustomerRoutingModule } from './customer-routing.module';
 
   CustomerSidebarComponent,
 
-  CustomerHomeComponent]
+  CustomerHomeComponent,
+
+  CustomerMealsComponent,
+
+  CustomerViewMealsComponent,
+
+  CustomerOrderMealsComponent,
+
+  CustomerUpdateProfileComponent,
+
+  CustomerBookedTablesComponent,
+
+  CustomerRestaurantsComponent]
 })
 export class CustomerModule{}

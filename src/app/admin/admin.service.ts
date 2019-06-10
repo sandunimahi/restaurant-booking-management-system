@@ -32,4 +32,8 @@ export class AdminService{
     return this.http.post("http://localhost:3000/api/manager/delete",info);
 
   }
+
+  addTables(tableDetails:any){
+    return this.http.post("http://localhost:3000/api/table/addTables",tableDetails);
+  }
 }

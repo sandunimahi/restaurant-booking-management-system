@@ -18,7 +18,10 @@ const ownerSchema=mongoose.Schema({
     contactNumber:Number,
     city:String,
     description:String,
-    managerID:Number
+    managerID:Number,
+    tables:[
+
+    ]
   }
 });
 

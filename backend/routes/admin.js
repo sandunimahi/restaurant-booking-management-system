@@ -82,7 +82,8 @@ router.post("/api/owner/createOwner",(req,res,next) => {
           contactNumber:req.body.restaurantcontactNumber,
           city:req.body.restaurantCity,
           description:req.body.description,
-          managerID:null
+          managerID:null,
+          tables:[]
         }
       });
       owner.save().then(addedOwner => {
@@ -247,5 +248,15 @@ router.post("/api/manager/delete",(req,res,next) => {
     console.log("Error: "+err);
   })
 });
+//Adding Tables - Admin
+router.post("/api/table/addTables",(req,res,next) => {
+  Owner.updateOne({'userID':Number(req.body.userID)},{$set:{'restaurant.tables':req.body.tables}}).then(response =>{
+    res.status(200).json({
+
+    });
+  }).catch(err => {
+    console.log("Error: "+err);
+  })
+})
 
 module.exports=router;
