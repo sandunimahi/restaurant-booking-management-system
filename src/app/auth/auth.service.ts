@@ -55,7 +55,7 @@ export class AuthService{
          this.router.navigate(["/admin/"+response.userID]);
         }
         else if (response.role=="Manager"){
-          this.router.navigate(["/manager"]);
+          this.router.navigate(["/manager/"+response.userID]);
 
         }
         else if(response.role=="Customer"){

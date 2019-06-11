@@ -9,7 +9,7 @@ import { ManagerPromotionsComponent } from './manager-promotions/manager-promoti
 
 const managerRoutes: Routes = [
   {
-    path: '',
+    path: ':id',
     component:ManagerComponent,
     children: [
        { path: 'manageMeals', component: ManagerMealsComponent },

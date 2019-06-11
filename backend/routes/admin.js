@@ -198,7 +198,7 @@ router.post("/api/user/login",(req,res,next) => {
     res.status(200);
 });
 
-//Getting manager details - Update Manager
+//Getting manager details - Update Manager - Admin
 router.get("/api/manager/getManagerDetails/:id",(req,res,next) => {
   Manager.find({'ownerID':req.params.id}).then(response=>{
     res.status(200).json({
@@ -209,11 +209,39 @@ router.get("/api/manager/getManagerDetails/:id",(req,res,next) => {
   })
 });
 
-//Updating Manager
+//Getting manager details - Update Manager -  Manager
+router.get("/api/manager/getManagerDetailsByManager/:id",(req,res,next) => {
+  Manager.find({'userID':req.params.id}).then(response=>{
+    res.status(200).json({
+      manager:response
+    });
+  }).catch(err => {
+    console.log("Error: "+err);
+  })
+});
+
+//Updating Manager - By admin
 router.post("/api/manager/updateManager",(req,res,next) => {
   Manager.updateOne({'userID':Number(req.body.userID)},{$set:{'name.firstname':req.body.firstname,'name.lastname':req.body.lastname,'address':req.body.address,'contactNumber':req.body.contactNumber,'email':req.body.email}}).then(response => {
     res.status(200).json({
     });
+  }).catch(err => {
+    console.log("Error: "+err);
+  })
+});
+
+//Updating Manager - By manager
+router.post("/api/manager/updateManagerByManager",(req,res,next) => {
+  Manager.updateOne({'userID':Number(req.body.userID)},{$set:{'name.firstname':req.body.firstname,'name.lastname':req.body.lastname,'address':req.body.address,'contactNumber':req.body.contactNumber,'email':req.body.email}}).then(response => {
+    console.log(response);
+    User.updateOne({'id':Number(req.body.userID)},{$set:{'password':req.body.password}}).then(response1 =>{
+      console.log(response1);
+      res.status(200).json({
+
+      });
+    }).catch(err => {
+      console.log("Error: "+err);
+    })
   }).catch(err => {
     console.log("Error: "+err);
   })
@@ -259,4 +287,31 @@ router.post("/api/table/addTables",(req,res,next) => {
   })
 })
 
-module.exports=router;
+router.get("/api/admin/getDetails/:id",(req,res,next) => {
+  Owner.findOne({'userID':req.params.id}).then(response =>{
+    console.log(response);
+    res.status(200).json({
+      owner:response
+    });
+  }).catch(err => {
+    console.log("Error: "+err);
+  })
+});
+
+router.post("/api/admin/updateProfile",(req,res,next) => {
+  Owner.updateOne({'userID':Number(req.body.userID)},{$set:{'name.firstname':req.body.firstname,'name.lastname':req.body.lastname,'address':req.body.address,'contactNumber':req.body.contactNumber,'email':req.body.email}}).then(response =>{
+    console.log(response);
+    User.updateOne({'id':Number(req.body.userID)},{$set:{'password':req.body.password}}).then(response1 =>{
+      console.log(response1);
+      res.status(200).json({
+
+      });
+    }).catch(err => {
+      console.log("Error: "+err);
+    })
+
+  }).catch(err => {
+    console.log("Error: "+err);
+  })
+});
+ module.exports=router;

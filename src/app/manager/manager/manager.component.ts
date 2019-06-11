@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-manager',
@@ -7,9 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ManagerComponent implements OnInit {
 
-  constructor() { }
-
+  constructor(public activate:ActivatedRoute) { }
+  currentUserID;
   ngOnInit() {
+    this.currentUserID=this.activate.snapshot.params['id'];
+    console.log(this.currentUserID);
   }
 
 }

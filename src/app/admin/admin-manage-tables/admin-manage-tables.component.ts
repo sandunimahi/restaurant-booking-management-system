@@ -39,6 +39,8 @@ export class AdminManageTablesComponent implements OnInit {
     console.log(data);
     this.adminService.addTables(data).subscribe(response => {
       form.reset();
+      this.snackBar.open( "Tables added", "OK", {
+      });
     });
 
   }

@@ -36,4 +36,14 @@ export class AdminService{
   addTables(tableDetails:any){
     return this.http.post("http://localhost:3000/api/table/addTables",tableDetails);
   }
+
+  getAdminDetails(userID:any){
+    return this.http.get<{owner:any}>("http://localhost:3000/api/admin/getDetails/"+userID);
+
+  }
+
+  updateOwner(owner:any){
+
+    return this.http.post("http://localhost:3000/api/admin/updateProfile",owner);
+  }
 }

@@ -1,4 +1,8 @@
-<!--<mat-toolbar color="primary"> Manage Tables </mat-toolbar>-->
+<mat-toolbar color="primary"> Manage Tables </mat-toolbar>
+<mat-tab-group>
+<mat-tab label="Add Tables">
+<div class="container scroll" style="border-top: 1000px">
+    <cdk-virtual-scroll-viewport itemSize="50" class="example-viewport">
 
 <div class="container customerInfo" style="padding-top: 5px">
     <div class="row">
@@ -74,3 +78,8 @@
       <div class="form-group row" style="margin-left: 500px; margin-top: 0px;">
         <button type="submit" (click)="onSubmitTableLayout(form)" class="btn btn-success">Submit Table Layout</button>
     </div>
+    </cdk-virtual-scroll-viewport>
+    </div>
+    </mat-tab>
+    </mat-tab-group>
+
