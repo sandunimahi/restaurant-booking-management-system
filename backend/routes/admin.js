@@ -83,7 +83,11 @@ router.post("/api/owner/createOwner",(req,res,next) => {
           city:req.body.restaurantCity,
           description:req.body.description,
           managerID:null,
-          tables:[]
+          opening:null,
+          closing:null,
+          tables:[],
+          meals:[],
+          promotions:[],
         }
       });
       owner.save().then(addedOwner => {
@@ -314,4 +318,67 @@ router.post("/api/admin/updateProfile",(req,res,next) => {
     console.log("Error: "+err);
   })
 });
+
+//Adding Menu - manager
+router.post("/api/menu/addMenu",(req,res,next) => {
+  console.log(req.body);
+  Owner.updateOne({'userID':Number(req.body.userID)},{$set:{'restaurant.meals':req.body.meal}}).then(response =>{
+    console.log(response);
+    res.status(200).json({
+
+    });
+  }).catch(err => {
+    console.log("Error: "+err);
+  })
+});
+
+//Addong Promotions- manager
+router.post("/api/promotions/addPromotions",(req,res,next) => {
+  Owner.updateOne({'userID':Number(req.body.userID)},{$set:{'restaurant.promotions':req.body.promotions}}).then(response =>{
+    res.status(200).json({
+
+    });
+  }).catch(err => {
+    console.log("Error: "+err);
+  })
+});
+
+//Adding promotion- Admin
+router.post("/api/promotions/add/Promotions",(req,res,next)=> {
+  Owner.updateOne({'userID':Number(req.body.userID)},{$set:{'restaurant.promotions':req.body.promotions}}).then(response =>{
+    console.log(response);
+    res.status(200).json({
+
+    });
+  }).catch(err => {
+    console.log("Error: "+err);
+  })
+});
+
+//getting restaurant infornation
+router.get("/api/manager/getRestaurantDetails/:id",(req,res,next)=> {
+  console.log("This is getting restaurant information")
+  console.log(req.params.id)
+  Owner.findOne({'userID':req.params.id}).then(response =>{
+    res.status(200).json({
+      owner:response
+    });
+  }).catch(err => {
+    console.log("Error: "+err);
+  })
+});
+
+//Updating restaurant - Admin
+router.post("/api/manager/updateRestaurant",(req,res,next)=> {
+  Owner.updateOne({'userID':Number(req.body.userID)},{$set:{'restaurant.name':req.body.name,'restaurant.contactNumber':req.body.contactNumber,'restaurant.city':req.body.city,'restaurant.description':req.body.description,'restaurant.opening':req.body.opening,'restaurant.closing':req.body.closing}}).then(response =>{
+    console.log(response);
+    res.status(200).json({
+    });
+  }).catch(err => {
+    console.log("Error: "+err);
+  })
+});
+
+
  module.exports=router;
+

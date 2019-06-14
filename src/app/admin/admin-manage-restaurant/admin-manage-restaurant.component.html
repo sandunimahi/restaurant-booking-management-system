@@ -5,45 +5,45 @@
     <mat-toolbar color="primary"> Restaurant Information </mat-toolbar>
   <cdk-virtual-scroll-viewport itemSize="50" class="example-viewport">
 
-  <form #ownerRegistrationForm="ngForm">
+  <form (submit)="onUpdateRestaurant(restaurantForm)"  #restaurantForm="ngForm">
   <div class="container border border-secondary Info">
     <p class="font-weight-bold">Update Restaurant Information</p>
     <div class="form-group row">
         <label for="resName" class="col-sm-3 col-form-label">Restaurant Name</label>
         <div class="col-sm-8">
-          <input ngModel #resName="ngModel" type="email" class="form-control" id="resName" name="resName"placeholder="Restaurant Name" required>
+          <input ngModel #resName="ngModel" type="email" class="form-control" id="resName" name="resName"placeholder="Restaurant Name" required [(ngModel)]="currentRestaurantInfonation.name">
         </div>
     </div>
     <div class="form-group row">
       <label for="resContact" class="col-sm-3 col-form-label">Contact Number</label>
       <div class="col-sm-6">
-        <input  ngModel #resContact="ngModel" pattern="\d{10}" type="text" class="form-control" id="resContact" name="resContact" placeholder="Contact Number" required>
+        <input  ngModel #resContact="ngModel" pattern="\d{10}" type="text" class="form-control" id="resContact" name="resContact" placeholder="Contact Number" required [(ngModel)]="currentRestaurantInfonation.contactNumber">
       </div>
     </div>
     <div class="form-group row">
       <label for="resCity" class="col-sm-3 col-form-label">City</label>
       <div class="col-sm-6">
-        <input ngModel #resCity="ngModel" type="email" class="form-control" id="resCity" name="resCity" placeholder="City" required>
+        <input ngModel #resCity="ngModel" type="email" class="form-control" id="resCity" name="resCity" placeholder="City" required [(ngModel)]="currentRestaurantInfonation.city">
       </div>
     </div>
     <div class="form-group row">
         <label for="description" class="col-sm-3 col-form-label">Description</label>
         <div class="col-sm-8">
-          <textarea  ngModel #description="ngModel" type="text" class="form-control" id="description" name="description" placeholder="Description" ></textarea>
+          <textarea  ngModel #description="ngModel" type="text" class="form-control" id="description" name="description" placeholder="Description" required [(ngModel)]="currentRestaurantInfonation.description"></textarea>
         </div>
       </div>
 
       <div class="form-group row">
           <label for="openingAt" class="col-sm-3 col-form-label">Opening At</label>
           <div class="col-sm-8">
-            <input  ngModel #openingAt="ngModel" type="time" class="form-control" id="openingAt" name="openingAt" placeholder="Opening Time" required >
+            <input  ngModel #openingAt="ngModel" type="time" class="form-control" id="openingAt" name="openingAt" placeholder="Opening Time" required [(ngModel)]="currentRestaurantInfonation.opening">
           </div>
       </div>
 
       <div class="form-group row">
           <label for="closingAt" class="col-sm-3 col-form-label">Closing At</label>
           <div class="col-sm-8">
-            <input  ngModel #closingAt="ngModel" type="time" class="form-control" id="closingAt" name="closingAt" placeholder="Closing Time" required >
+            <input  ngModel #closingAt="ngModel" type="time" class="form-control" id="closingAt" name="closingAt" placeholder="Closing Time" required [(ngModel)]="currentRestaurantInfonation.closing">
           </div>
         </div>
 

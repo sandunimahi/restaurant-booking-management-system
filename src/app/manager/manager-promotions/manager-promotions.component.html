@@ -11,7 +11,7 @@
     <!-- Start  -->
 
         <div class="col-6 border border-secondary" style="padding-top: 10px">
-        <form  (submit)="onAddPromotions(form)"  #form="ngForm">
+        <form  (submit)="onAddPromotion(form)"  #form="ngForm">
             <p class="font-weight-bold">Add Promotions</p>
 
 
@@ -49,16 +49,16 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr *ngFor="let table of promotionAdded">
-                    <td>{{table.description}}</td>
-                    <td>{{table.code}}</td>
+                  <tr *ngFor="let promotion of promotionAdded">
+                    <td>{{promotion.description}}</td>
+                    <td>{{promotion.code}}</td>
                   </tr>
                 </tbody>
               </table>
               <br>
               <br>
               <div class="form-group row" style="margin-left: 150px; margin-top: 0px;">
-               <a class="btn btn-danger" (click)="onClearTable()"> Clear Promotions</a>
+               <a class="btn btn-danger" (click)="onClearPromotion()"> Clear Promotions</a>
               </div>
             </div>
       </div>

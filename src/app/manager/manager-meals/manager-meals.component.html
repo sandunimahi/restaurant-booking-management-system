@@ -10,7 +10,7 @@
                 <!-- Start -->
 
                     <div class="col-6 border border-secondary" style="padding-top: 10px">
-                    <form >
+                    <form (submit)="onAddMenu(form)"  #form="ngForm">
                         <p class="font-weight-bold">Add Menu</p>
 
 
@@ -50,13 +50,14 @@
                             <thead>
                               <tr>
                                 <th scope="col">Meal</th>
-                                <!-- <th scope="col">Time</th> -->
+                                <th scope="col">Description</th>
                                 <th scope="col">Price</th>
                               </tr>
                             </thead>
                             <tbody>
-                              <tr *ngFor="let meal of meal">
+                              <tr *ngFor="let meal of menuAdded">
                                 <td>{{meal.name}}</td>
+                                <td>{{meal.description}}</td>
                                 <td>{{meal.price}}</td>
                                 <!-- <td>{{meal.status}}</td> -->
                               </tr>
@@ -65,13 +66,16 @@
                           <br>
                           <br>
                           <div class="form-group row" style="margin-left: 150px; margin-top: 0px;">
-                           <a class="btn btn-danger" > Delete Meal</a>
+                           <a class="btn btn-danger" (click)="onClearMenu()" > Delete Meal</a>
                           </div>
                         </div>
                   </div>
                 </div>
 
 
+</div>
+<div class="form-group row" style="margin-left: 500px; margin-top: 0px;">
+    <button type="submit" (click)="onSubmitMenu(form)" class="btn btn-success">Submit Menu</button>
 </div>
 </cdk-virtual-scroll-viewport>
 </div>

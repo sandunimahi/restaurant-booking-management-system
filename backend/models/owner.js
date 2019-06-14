@@ -19,7 +19,15 @@ const ownerSchema=mongoose.Schema({
     city:String,
     description:String,
     managerID:Number,
+    opening:String,
+    closing:String,
     tables:[
+
+    ],
+    meals:[
+
+    ],
+    promotions:[
 
     ]
   }

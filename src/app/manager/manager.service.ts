@@ -24,4 +24,12 @@ export class ManagerService{
     return this.http.post("http://localhost:3000/api/manager/updateManagerByManager",manager);
   }
 
+  addMenu(MealDetails:any){
+    return this.http.post("http://localhost:3000/api/menu/addMenu",MealDetails);
+  }
+
+  addPromotion(PromotionDetails:any){
+    return this.http.post("http://localhost:3000/api/promotions/addPromotions",PromotionDetails);
+  }
+
 }

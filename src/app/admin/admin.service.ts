@@ -46,4 +46,20 @@ export class AdminService{
 
     return this.http.post("http://localhost:3000/api/admin/updateProfile",owner);
   }
+
+  addPromotions(promotionDetails:any){
+    return this.http.post("http://localhost:3000/api/promotions/add/Promotions",promotionDetails);
+  }
+
+  getRestaurantDetails(userID:any){
+    return this.http.get<{owner:any}>("http://localhost:3000/api/manager/getRestaurantDetails/"+userID);
+  }
+
+  updateRestaurant(restaurantDetails:any){
+    return this.http.post("http://localhost:3000/api/manager/updateRestaurant",restaurantDetails);
+  }
+
+  addMenu(MealDetails:any){
+    return this.http.post("http://localhost:3000/api/menu/addMenu",MealDetails);
+  }
 }

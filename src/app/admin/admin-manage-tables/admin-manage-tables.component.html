@@ -81,5 +81,32 @@
     </cdk-virtual-scroll-viewport>
     </div>
     </mat-tab>
+    <mat-tab label="View Tables">
+        <div class="col border border-secondary" style="padding-top: 10px; width:950px; padding-bottom: 200px;">
+            <p class="font-weight-bold">Table Availability</p>
+            <div class="form-group row">
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th scope="col">Table Type</th>
+                      <!-- <th scope="col">Time</th> -->
+                      <th scope="col">Description</th>
+                      <th scope="col">Number</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let table of currentTables">
+                      <td>{{table.type}}</td>
+                      <td>{{table.description}}</td>
+                      <td>{{table.number}}</td>
+
+                      <!-- <td>{{room.status}}</td> -->
+                    </tr>
+                  </tbody>
+                </table>
+
+              </div>
+        </div>
+    </mat-tab>
     </mat-tab-group>
 

@@ -16,8 +16,20 @@ export class AdminManageTablesComponent implements OnInit {
   currentUserID;
   ngOnInit() {
     this.currentUserID=this.activate.snapshot.parent.params['id'];
-
+    this.viewTables();
   }
+
+  currentTables=[];
+  viewTables(){
+    this.currentTables=[];
+    this.adminService.getRestaurantDetails(this.currentUserID).subscribe(response =>{
+
+      this.currentTables=response.owner.restaurant.tables;
+      console.log(this.currentTables);
+    });
+  }
+
+
   tablesAdded=[];
   onAddTable(form:NgForm){
     this.tablesAdded.push({type:form.value.tableType,description:form.value.tableDescription,number:form.value.numOfTables});
@@ -39,6 +51,7 @@ export class AdminManageTablesComponent implements OnInit {
     console.log(data);
     this.adminService.addTables(data).subscribe(response => {
       form.reset();
+      this.viewTables();
       this.snackBar.open( "Tables added", "OK", {
       });
     });
