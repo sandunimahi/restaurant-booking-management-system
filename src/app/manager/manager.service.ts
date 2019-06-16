@@ -32,4 +32,17 @@ export class ManagerService{
     return this.http.post("http://localhost:3000/api/promotions/addPromotions",PromotionDetails);
   }
 
+  getRestaurantDetails(userID:any){
+    return this.http.get<{owner:any}>("http://localhost:3000/api/manager/getRestaurantDetails/"+userID);
+  }
+
+  addMealOrder(order:any){
+    return this.http.post("http://localhost:3000/api/manager/orderMeals",order);
+
+  }
+
+  viewOrderedMeals(ownerID:any){
+    return this.http.get<{orders:any}>("http://localhost:3000/api/manager/getOrderedMeals/"+ownerID);
+
+  }
 }

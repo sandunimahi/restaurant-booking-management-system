@@ -4,6 +4,7 @@ const User=require('../models/user');
 const Customer=require('../models/customer');
 const Owner=require('../models/owner');
 const Manager=require('../models/manager');
+const MealOrder=require('../models/mealOrder');
 const jwt=require('jsonwebtoken');
 
 
@@ -379,6 +380,47 @@ router.post("/api/manager/updateRestaurant",(req,res,next)=> {
   })
 });
 
+//Ordering Meal
+router.post("/api/manager/orderMeals",(req,res,next)=> {
+  console.log("This is ordering meals by Manager");
+  const mealOrder=new MealOrder({
+    ownerID:req.body.ownerID,
+    meal:{
+    name:req.body.meal.name,
+    description:req.body.meal.description,
+    price:req.body.meal.price
+    },
+    quantity:req.body.quantity,
+    bookedBy:{
+      role:req.body.bookedBy.role,
+      id:req.body.bookedBy.id
+    },
+    orderDate:req.body.orderDate,
+    orderTime:req.body.orderTime,
+    orderType:req.body.orderType,
+    additionalDetails:req.body.additionalDetails,
+  });
+  mealOrder.save().then(response =>{
+    console.log(response);
+    res.status(200).json({
+    });
 
+  }).catch(err => {
+    console.log("Error: "+err);
+  })
+});
+
+//Viewing Ordred meals
+router.get("/api/manager/getOrderedMeals/:id",(req,res,next)=> {
+  console.log("This is viewing ordered meals");
+  MealOrder.find({'ownerID':req.params.id}).then( response =>{
+    console.log(response);
+    res.status(200).json({
+      orders:response
+    });
+  }).catch(err => {
+    console.log("Error: "+err);
+  })
+});
  module.exports=router;
 
