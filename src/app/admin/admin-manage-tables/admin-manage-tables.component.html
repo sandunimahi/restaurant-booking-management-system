@@ -13,11 +13,18 @@
           <form  (submit)="onAddTable(form)"  #form="ngForm">
               <p class="font-weight-bold">Add Tables</p>
 
+              <div class="form-group row">
+                <label for="tableNo" class="col-sm-4 col-form-label">Table No.</label>
+                <div class="col-sm-8">
+                  <input type="number" ngModel #tableNo="ngModel" class="form-control" id="tableNo"  name="tableNo" required>
+                  <div class="alert alert-danger" *ngIf="!tableNo.valid && tableNo.touched">Invalid</div>
+                </div>
+            </div>
 
             <div class="form-group row">
                 <label for="tableType" class="col-sm-4 col-form-label">Table Type</label>
                 <div class="col-sm-8">
-                  <input type="text" ngModel #tableType="ngModel" class="form-control" id="tableType"  name="tableType" placeholder="Eg- Indoor A/C, Luxoury,etc " required>
+                  <input type="text" ngModel #tableType="ngModel" class="form-control" id="tableType"  name="tableType" placeholder="Eg- A/C, Non A/C, Luxoury,etc" required>
                   <div class="alert alert-danger" *ngIf="!tableType.valid && tableType.touched">Invalid</div>
                 </div>
             </div>
@@ -31,12 +38,28 @@
             </div>
 
             <div class="form-group row">
-                <label for="numOfTables" class="col-sm-4 col-form-label">Num Of Tables</label>
+              <label for="tableLocation" class="col-sm-4 col-form-label">Location</label>
+              <div class="col-sm-8">
+                <input type="text" ngModel #tableLocation="ngModel" class="form-control" id="tableLocation"  name="tableLocation" placeholder="Eg- Rooftop, Pool Area" required>
+                <div class="alert alert-danger" *ngIf="!tableLocation.valid && tableLocation.touched">Invalid</div>
+              </div>
+          </div>
+
+            <div class="form-group row">
+                <label for="tableSeats" class="col-sm-4 col-form-label">Seats</label>
                 <div class="col-sm-8">
-                  <input type="number" ngModel #numOfTables="ngModel" class="form-control" id="numOfTables"  name="numOfTables" placeholder="Number of Tables" required>
-                  <div class="alert alert-danger" *ngIf="!numOfTables.valid && numOfTables.touched">Invalid</div>
+                  <input type="number" ngModel #tableSeats="ngModel" class="form-control" id="tableSeats"  name="tableSeats" placeholder="Number of Seats" required>
+                  <div class="alert alert-danger" *ngIf="!tableSeats.valid && tableSeats.touched">Invalid</div>
                 </div>
             </div>
+
+            <div class="form-group row">
+              <label for="tableStatus" class="col-sm-4 col-form-label">Status</label>
+              <div class="col-sm-8">
+                <input type="text" ngModel #tableStatus="ngModel" class="form-control" id="tableStatus"  name="tableStatus" placeholder="Availability" required>
+                <div class="alert alert-danger" *ngIf="!tableStatus.valid && tableStatus.touched">Invalid</div>
+              </div>
+          </div>
 
             <div class="form-group row" style="margin-left: 150px; margin-top: 0px;">
                 <button type="submit" class="btn btn-success">Add Table</button>
@@ -49,17 +72,23 @@
                 <table class="table table-striped">
                   <thead>
                     <tr>
+                        <th scope="col">Table No.</th>
                       <th scope="col">Table Type</th>
                       <!-- <th scope="col">Time</th> -->
                       <th scope="col">Description</th>
-                      <th scope="col">Number</th>
+                      <th scope="col">Location</th>
+                      <th scope="col">Seats</th>
+                      <th scope="col">Status</th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr *ngFor="let table of tablesAdded">
+                        <td>{{table.No}}</td>
                       <td>{{table.type}}</td>
                       <td>{{table.description}}</td>
-                      <td>{{table.number}}</td>
+                      <td>{{table.location}}</td>
+                      <td>{{table.seats}}</td>
+                      <td>{{table.status}}</td>
 
                       <!-- <td>{{room.status}}</td> -->
                     </tr>
@@ -88,17 +117,23 @@
                 <table class="table table-striped">
                   <thead>
                     <tr>
-                      <th scope="col">Table Type</th>
-                      <!-- <th scope="col">Time</th> -->
-                      <th scope="col">Description</th>
-                      <th scope="col">Number</th>
+                        <th scope="col">Table No.</th>
+                        <th scope="col">Table Type</th>
+                        <!-- <th scope="col">Time</th> -->
+                        <th scope="col">Description</th>
+                        <th scope="col">Location</th>
+                        <th scope="col">Seats</th>
+                        <th scope="col">Status</th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr *ngFor="let table of currentTables">
-                      <td>{{table.type}}</td>
-                      <td>{{table.description}}</td>
-                      <td>{{table.number}}</td>
+                        <td>{{table.No}}</td>
+                        <td>{{table.type}}</td>
+                        <td>{{table.description}}</td>
+                        <td>{{table.location}}</td>
+                        <td>{{table.seats}}</td>
+                        <td>{{table.status}}</td>
 
                       <!-- <td>{{room.status}}</td> -->
                     </tr>

@@ -1,40 +1,185 @@
-<div class="container" style="width:1080px">
-    <mat-horizontal-stepper>
-      <mat-step label="View table">
-         <div class="" style="padding-top:20px; padding-left: 10px">
-          <!-- <cdk-virtual-scroll-viewport itemSize="50" class="example-viewport"> -->
-              <div class="form-group row" style="padding-left: 250px">
-                  <div class="form-group row">
-                      <table class="table table-striped">
-                        <thead>
-                          <tr>
-                            <th scope="col">Table Type</th>
-                            <!-- <th scope="col">Time</th> -->
-                            <th scope="col">Availability</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr *ngFor="let table of table">
-                            <td>{{table.type}}</td>
-                            <td>{{table.status}}</td>
-                            <!-- <td>{{room.status}}</td> -->
-                          </tr>
-                        </tbody>
-                      </table>
+<mat-toolbar color="primary"> Manage Tables </mat-toolbar>
+<mat-tab-group>
+<mat-tab label="Update Table Status">
+<div class="container scroll" style="border-top: 1000px">
+    <cdk-virtual-scroll-viewport itemSize="50" class="example-viewport">
 
-                <label for="appointmentDate" class="col-sm-3 col-form-label" style="padding-top: 20px">Select Date</label>
+<div class="container customerInfo" style="padding-top: 5px">
+    <div class="row">
+
+      <!-- Start  -->
+
+          <div class="col-6 border border-secondary" style="padding-top: 10px">
+          <form  #form="ngForm">
+              <p class="font-weight-bold">Add Tables</p>
+
+              <div class="form-group row">
+                <label for="tableNo" class="col-sm-4 col-form-label">Table No.</label>
                 <div class="col-sm-8">
-                    <mat-form-field >
-                        <input matInput ngModel #appointmentDate="ngModel" name="appointmentDate"[min]="" [max]="" [matDatepicker]="picker" placeholder="Choose a date">
-                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                        <mat-datepicker #picker></mat-datepicker>
-                      </mat-form-field>
-                      <!-- <button class="btn btn-primary" style="margin-left: 70px">Search</button> -->
+                  <input type="number" ngModel #tableNo="ngModel" class="form-control" id="tableNo"  name="tableNo" required readonly>
+                  <div class="alert alert-danger" *ngIf="!tableNo.valid && tableNo.touched">Invalid</div>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="tableType" class="col-sm-4 col-form-label">Table Type</label>
+                <div class="col-sm-8">
+                  <input type="text" ngModel #tableType="ngModel" class="form-control" id="tableType"  name="tableType" placeholder="Eg- A/C, Non A/C, Luxoury,etc" required readonly>
+                  <div class="alert alert-danger" *ngIf="!tableType.valid && tableType.touched">Invalid</div>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="tableDescription" class="col-sm-4 col-form-label">Table Description</label>
+                <div class="col-sm-8">
+                  <textarea type="text" ngModel #tableDescription="ngModel" class="form-control" id="tableDescription"  name="tableDescription" placeholder="Table Description" required readonly></textarea>
+                  <div class="alert alert-danger" *ngIf="!tableDescription.valid && tableDescription.touched">Invalid</div>
+                </div>
+            </div>
+
+            <div class="form-group row">
+              <label for="tableLocation" class="col-sm-4 col-form-label">Location</label>
+              <div class="col-sm-8">
+                <input type="text" ngModel #tableLocation="ngModel" class="form-control" id="tableLocation"  name="tableLocation" placeholder="Eg- Rooftop, Pool Area, etc " required readonly>
+                <div class="alert alert-danger" *ngIf="!tableLocation.valid && tableLocation.touched">Invalid</div>
+              </div>
+          </div>
+
+            <div class="form-group row">
+                <label for="tableSeats" class="col-sm-4 col-form-label">Seats</label>
+                <div class="col-sm-8">
+                  <input type="number" ngModel #tableSeats="ngModel" class="form-control" id="tableSeats"  name="tableSeats" placeholder="Number of Seats" required>
+                  <div class="alert alert-danger" *ngIf="!tableSeats.valid && tableSeats.touched">Invalid</div>
+                </div>
+            </div>
+
+            <div class="form-group row">
+              <label for="tableStatus" class="col-sm-4 col-form-label">Status</label>
+              <div class="col-sm-8">
+                <input type="text" ngModel #tableStatus="ngModel" class="form-control" id="tableStatus"  name="tableStatus" placeholder="Availability" required>
+                <div class="alert alert-danger" *ngIf="!tableStatus.valid && tableStatus.touched">Invalid</div>
+              </div>
+          </div>
+
+            <div class="form-group row" style="margin-left: 150px; margin-top: 0px;">
+                <button type="submit" class="btn btn-success">Update</button>
+            </div>
+        </form>
+        </div>
+        <!-- <div class="col-6 border border-secondary" style="padding-top: 10px">
+            <p class="font-weight-bold">Table Availability</p>
+            <div class="form-group row">
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                        <th scope="col">Table No.</th>
+                      <th scope="col">Table Type</th>
+                      <!-- <th scope="col">Time</th>
+                      <th scope="col">Description</th>
+                      <th scope="col">Location</th>
+                      <th scope="col">Seats</th>
+                      <th scope="col">Status</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let table of tablesAdded">
+                        <td>{{table.No}}</td>
+                      <td>{{table.type}}</td>
+                      <td>{{table.description}}</td>
+                      <td>{{table.location}}</td>
+                      <td>{{table.seats}}</td>
+                      <td>{{table.status}}</td>
+
+                      <!-- <td>{{room.status}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <br>
+                <br>
+                <div class="form-group row" style="margin-left: 150px; margin-top: 0px;">
+                 <a class="btn btn-danger" (click)="onClearTable()"> Clear Table</a>
                 </div>
               </div>
-            <!-- </cdk-virtual-scroll-viewport> -->
-            </div>
-            </div>
-            </mat-step>
-            </mat-horizontal-stepper>
-            </div>
+        </div>
+      </div>
+      </div>
+
+      <div class="form-group row" style="margin-left: 500px; margin-top: 0px;">
+        <button type="submit" class="btn btn-success">Submit Table Layout</button>
+    </div> -->
+  </div>
+   </div>
+   </cdk-virtual-scroll-viewport>
+   </div>
+</mat-tab>
+    <mat-tab label="View Tables">
+        <div class="col border border-secondary" style="padding-top: 10px; width:950px; padding-bottom: 200px;">
+            <p class="font-weight-bold">Table Availability</p>
+            <div class="form-group row">
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                        <th scope="col">Table No.</th>
+                        <th scope="col">Table Type</th>
+                        <!-- <th scope="col">Time</th> -->
+                        <th scope="col">Description</th>
+                        <th scope="col">Location</th>
+                        <th scope="col">Seats</th>
+                        <th scope="col">Status</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let table of currentTables">
+                        <td>{{table.No}}</td>
+                        <td>{{table.type}}</td>
+                        <td>{{table.description}}</td>
+                        <td>{{table.location}}</td>
+                        <td>{{table.seats}}</td>
+                        <td>{{table.status}}</td>
+
+                      <!-- <td>{{room.status}}</td> -->
+                    </tr>
+                  </tbody>
+                </table>
+
+              </div>
+        </div>
+    </mat-tab>
+
+    <!-- Reserve Table-->
+    <mat-tab label="Reserve Table">
+        <div class="col border border-secondary" style="padding-top: 10px; width:950px; padding-bottom: 200px;">
+            <p class="font-weight-bold">Table Availability</p>
+            <div class="form-group row">
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                        <th scope="col">Table No.</th>
+                        <th scope="col">Table Type</th>
+                        <!-- <th scope="col">Time</th> -->
+                        <th scope="col">Description</th>
+                        <th scope="col">Location</th>
+                        <th scope="col">Seats</th>
+                        <th scope="col">Status</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let table of currentTables">
+                        <td>{{table.No}}</td>
+                        <td>{{table.type}}</td>
+                        <td>{{table.description}}</td>
+                        <td>{{table.location}}</td>
+                        <td>{{table.seats}}</td>
+                        <td>{{table.status}}</td>
+
+                      <!-- <td>{{room.status}}</td> -->
+                    </tr>
+                  </tbody>
+                </table>
+
+              </div>
+        </div>
+    </mat-tab>
+
+    </mat-tab-group>
+
