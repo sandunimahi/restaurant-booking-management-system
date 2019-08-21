@@ -32,7 +32,7 @@ export class AdminManageTablesComponent implements OnInit {
 
   tablesAdded=[];
   onAddTable(form:NgForm){
-    this.tablesAdded.push({type:form.value.tableType,description:form.value.tableDescription,number:form.value.numOfTables});
+    this.tablesAdded.push({type:form.value.tableType,description:form.value.tableDescription,tableSeats:form.value.tableSeats,tableNo:form.value.tableNo,tableLocation:form.value.tableLocation,tableStatus:form.value.tableStatus});
     console.log(this.tablesAdded);
     form.reset();
 

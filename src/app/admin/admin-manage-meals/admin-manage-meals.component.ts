@@ -39,7 +39,7 @@ export class AdminManageMealsComponent implements OnInit {
   menuAdded=[];
   onAddMenu(form:NgForm){
     console.log(form.value);
-    this.menuAdded.push({name:form.value.meal,description:form.value.mealDescription,price:form.value.mealPrice});
+    this.menuAdded.push({name:form.value.meal,description:form.value.mealDescription,price:form.value.mealPrice,mealType:form.value.mealType,mealStatus:form.value.mealStatus});
      console.log(this.menuAdded);
      form.reset();
 

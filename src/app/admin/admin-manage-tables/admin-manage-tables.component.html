@@ -9,7 +9,7 @@
 
       <!-- Start  -->
 
-          <div class="col-6 border border-secondary" style="padding-top: 10px">
+          <div class="col-5 border border-secondary" style="padding-top: 10px">
           <form  (submit)="onAddTable(form)"  #form="ngForm">
               <p class="font-weight-bold">Add Tables</p>
 
@@ -66,7 +66,7 @@
             </div>
         </form>
         </div>
-        <div class="col-6 border border-secondary" style="padding-top: 10px">
+        <div class="col-7 border border-secondary" style="padding-top: 10px">
             <p class="font-weight-bold">Table Availability</p>
             <div class="form-group row">
                 <table class="table table-striped">
@@ -83,12 +83,12 @@
                   </thead>
                   <tbody>
                     <tr *ngFor="let table of tablesAdded">
-                        <td>{{table.No}}</td>
+                        <td>{{table.tableNo}}</td>
                       <td>{{table.type}}</td>
                       <td>{{table.description}}</td>
-                      <td>{{table.location}}</td>
-                      <td>{{table.seats}}</td>
-                      <td>{{table.status}}</td>
+                      <td>{{table.tableLocation}}</td>
+                      <td>{{table.tableSeats}}</td>
+                      <td>{{table.tableStatus}}</td>
 
                       <!-- <td>{{room.status}}</td> -->
                     </tr>
@@ -128,12 +128,12 @@
                   </thead>
                   <tbody>
                     <tr *ngFor="let table of currentTables">
-                        <td>{{table.No}}</td>
+                        <td>{{table.tableNo}}</td>
                         <td>{{table.type}}</td>
                         <td>{{table.description}}</td>
-                        <td>{{table.location}}</td>
-                        <td>{{table.seats}}</td>
-                        <td>{{table.status}}</td>
+                        <td>{{table.tableLocation}}</td>
+                        <td>{{table.tableSeats}}</td>
+                        <td>{{table.tableStatus}}</td>
 
                       <!-- <td>{{room.status}}</td> -->
                     </tr>

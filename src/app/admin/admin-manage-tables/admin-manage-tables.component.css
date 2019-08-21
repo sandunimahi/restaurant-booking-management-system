@@ -1,18 +1,18 @@
 .example-stretched-tabs {
-  max-width: 800px;
+  /* max-width: 900px; */
 }
 
 .customerInfo{
   padding-top: 10px;
   padding-right: 50px;
   padding-bottom: 15px;
-  padding-left: 25px;
-  width: 750px;
+  padding-left: 10px;
+  width: 900px;
 
   margin-top: 20px;
   /* margin-bottom: 0px; */
-  border-right: 100px;
-  margin-left:170px;
+  /* border-right: 100px; */
+  /* margin-left:170px; */
 }
 
 
