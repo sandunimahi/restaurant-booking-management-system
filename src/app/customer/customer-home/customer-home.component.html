@@ -1,3 +1,36 @@
-<p>
-  customer-home works!
-</p>
+<mat-toolbar color="primary">Promotions </mat-toolbar>
+<mat-tab-group>
+    <mat-tab label="View Promotions">
+        <div class="col border border-secondary" style="padding-top: 10px; width:950px; padding-bottom: 200px;">
+            <p class="font-weight-bold">Promotions</p>
+            <div class="form-group row">
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                        <th scope="col">Restaurant Name</th>
+                        <th scope="col">City</th>
+                        <th scope="col">Restaurant Description</th>
+                      <th scope="col">Promotion Description</th>
+                      <th scope="col">Promotion Code</th>
+                      <th scope="col">View Restaurant</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let home of currentHome">
+                      <td>{{home.resName}}</td>
+                      <td>{{home.resCity}}</td>
+                      <td>{{home.resDescription}}</td>
+                      <td>{{home.promoDescription}}</td>
+                      <td>{{home.promocode}}</td>
+                      <td>{{<button class="btn btn-success" type="submit" style="margin-left: 100px">Select</button>}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <br>
+                <br>
+
+              </div>
+        </div>
+    </mat-tab>
+</mat-tab-group>
+<!--When you click on the select button the page should direct to the customer restauant viewing part-->

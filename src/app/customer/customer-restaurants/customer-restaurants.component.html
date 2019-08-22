@@ -1,3 +1,175 @@
-<p>
-  customer-restaurants works!
-</p>
+<mat-toolbar color="primary"> Restaurant </mat-toolbar>
+<mat-horizontal-stepper>
+    <mat-step label="Select Restaurant">
+
+
+    <div class="col border border-secondary" style="padding-top: 10px; width:950px; padding-bottom: 200px;">
+        <p class="font-weight-bold">Restaurant Details</p>
+        <div class="form-group row">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th scope="col">Restaurant Name</th>
+                  <th scope="col">Description</th>
+                  <th scope="col">City</th>
+                  <th scope="col">Opening at</th>
+                  <th scope="col">Closing at</th>
+                  <th scope="col">Selection</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let restaurant of restaurantDetails">
+                  <td>{{restaurant.restaurantName}}</td>
+                  <td>{{restaurant.description}}</td>
+                  <td>{{restaurant.resCity}}</td>
+                  <td>{{restaurant.openingAt}}</td>
+                  <td>{{restaurant.closingingAt}}</td>
+                  <td>{{<button class="btn btn-success" type="submit" style="margin-left: 100px">Select</button>}}</td>
+                </tr>
+              </tbody>
+            </table>
+            <br>
+            <br>
+
+          </div>
+    </div>
+
+    </mat-step>
+<mat-step label="Menu">
+    <div class="container" style="width: 950px; padding-bottom: 250px; padding-top: 50px">
+        <div class="col border border-secondary" style="padding-top: 10px">
+            <p class="font-weight-bold">Menu</p>
+            <div class="form-group row">
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th scope="col">Meal Name</th>
+                          <th scope="col">Meal Type</th>
+                          <th scope="col">Description</th>
+                          <th scope="col">Price</th>
+                          <th scope="col">Status</th>
+                          <th scope="col">Order</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let meal of currentMeals">
+                      <td>{{meal.name}}</td>
+                          <td>{{meal.mealType}}</td>
+                          <td>{{meal.description}}</td>
+                          <td>{{meal.price}}</td>
+                          <td>{{meal.mealStatus}}</td>
+                          <td>{{<button class="btn btn-success" type="submit" style="margin-left: 100px">Select</button>}}</td>
+                          <!-- can select multiple select buttons, I need to get a pop up message when the the select button
+                          is selected to get the quantity-->
+                          <!--You can select or unselect by clicking-->
+                    </tr>
+                  </tbody>
+                </table>
+                <br>
+                <br>
+                </div>
+                </div>
+                <br>
+                <button class="btn btn-success" type="submit" style="margin-left: 450px; padding-left:42px; padding-right: 42px">Order</button>
+                <a class="btn btn-primary" style="margin-left: 50px">Back to Restaurant</a>
+                </div>
+</mat-step>
+
+    <mat-step label= "Order Details">
+        <div class="container scroll" style="border-top: 1000px">
+            <cdk-virtual-scroll-viewport itemSize="50" class="example-viewport">
+
+        <div class="container customerInfo" style="padding-top: 5px">
+          <div class="row">
+
+                <div class="col-6 border border-secondary" style="padding-top: 10px">
+                <form   #form="ngForm">
+                    <p class="font-weight-bold">Order Details</p>
+
+
+                  <div class="form-group row">
+                      <label for="orderDate" class="col-sm-4 col-form-label">Order Date</label>
+                      <div class="col-sm-8">
+                          <input matInput ngModel #orderDate="ngModel" name="orderDate" type="date" required>
+                          <div class="alert alert-danger" *ngIf="!orderDate.valid && orderDate.touched"></div>
+                   </div>
+                  </div>
+
+                  <div class="form-group row">
+                      <label for="orderTime" class="col-sm-4 col-form-label">Order Time</label>
+                      <div class="col-sm-8">
+                          <input ngModel #orderTime="ngModel" name="orderTime" type="text" class="form-control" id="orderTime">
+                          <div class="alert alert-danger" *ngIf="!orderTime.valid && orderTime.touched"></div>
+                          <!-- A dropdown box for the restaurant open times 1hour duartions-->
+                      </div>
+                  </div>
+
+                  <div calss="form-row">
+                        <label for="dineOrTakeaway" class="col-sm-4 col-form-label">Dine-in / Take-away</label>
+                        <div class="col-sm-8">
+                            <mat-radio-group ngModel #dineOrTakeaway="ngModel" name="dineOrTakeaway" required>
+                                <mat-radio-button value="Dine-in">Dine-in</mat-radio-button>
+                                <mat-radio-button value="Take-away">Take-away</mat-radio-button>
+
+                             </mat-radio-group>
+                             <div class="alert alert-danger" *ngIf="!dineOrTakeaway.valid && dineOrTakeaway.touched">Invalid </div>
+                          </div>
+                  </div>
+                </form>
+                </div>
+                  <div class="col-6 border border-secondary" style="padding-top: 10px">
+                      <p class="font-weight-bold">Order Details</p>
+                      <div class="form-group row">
+    <!-- Generate the bill here customer name, telephone number, restaurant name, restaurant city, restaurant telephone,  meal name,  quantity and price, total -->
+    </div>
+    </div>
+</div>
+<br>
+<br>
+<button class="btn btn-success" type="submit" style="margin-left: 150px">Confirm Order</button>
+<!--A pop up messsge should come to confirm the order "Do you want to confirm the order?",  if you have selected dine in then a pop up should come asking "Do you want to reserve the table?" if they just select to order then "Thank you for ordering with us"-->
+<a class="btn btn-primary" style="margin-left: 50px">Back to Menu</a>
+<a class="btn btn-danger" style="margin-left: 50px">Delete Order</a>
+</div>
+</cdk-virtual-scroll-viewport>
+</div>
+</mat-step>
+<mat-step label="Reserve Table">
+    <div class="col border border-secondary" style="padding-top: 10px; width:950px; padding-bottom: 200px;">
+        <p class="font-weight-bold">Reserve Table</p>
+        <div class="form-group row">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                    <th scope="col">Table No.</th>
+                    <th scope="col">Table Type</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Location</th>
+                    <th scope="col">Seats</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Select Table</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let table of currentTables">
+                    <td>{{table.No}}</td>
+                    <td>{{table.type}}</td>
+                    <td>{{table.description}}</td>
+                    <td>{{table.location}}</td>
+                    <td>{{table.seats}}</td>
+                    <td>{{table.status}}</td>
+                    <td>{{<button class="btn btn-success" type="submit" style="margin-left: 100px">Select</button>}}</td>
+<!--show the ones that are availabe in the selected time-->
+<!--can select many tables-->
+                </tr>
+              </tbody>
+            </table>
+          </div>
+    </div>
+    <br>
+    <button class="btn btn-success" type="submit" style="margin-left: 450px">Confirm Reservation</button>
+          <!--pop up messsage"Do you want confirm?" if yes " "Thank you for Ordering with us"-->
+<a class="btn btn-primary" style="margin-left: 50px">Back to Order Details</a>
+</mat-step>
+</mat-horizontal-stepper>
+

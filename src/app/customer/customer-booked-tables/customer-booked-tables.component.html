@@ -1,4 +1,39 @@
-<mat-horizontal-stepper>
-  <mat-step label="Select table">
-  </mat-step>
-  </mat-horizontal-stepper>
+<mat-toolbar color="primary"> Upcoming Table Reservations </mat-toolbar>
+<mat-tab-group>
+    <mat-tab label="View Reservations">
+<!--Show this in a pdf Restarant name, restarnt city,Tel, table number, location, date, time-->
+
+      <!--   <div class="col border border-secondary" style="padding-top: 10px; width:950px; padding-bottom: 200px;">
+            <p class="font-weight-bold">Reservation Details</p>
+            <div class="form-group row">
+                <table class="table table-striped">
+                    <thead>
+                      <tr>
+                          <th scope="col">Table No.</th>
+                          <th scope="col">Table Type</th>
+                          <th scope="col">Description</th>
+                          <th scope="col">Location</th>
+                          <th scope="col">Seats</th>
+                          <th scope="col">Select Table</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let table of currentTables">
+                          <td>{{table.No}}</td>
+                          <td>{{table.type}}</td>
+                          <td>{{table.description}}</td>
+                          <td>{{table.location}}</td>
+                          <td>{{table.seats}}</td>
+                          <td>{{table.status}}</td>
+                          <td>{{<button class="btn btn-success" type="submit" style="margin-left: 100px">Select</button>}}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+          </div> -->
+          <br>
+          <button class="btn btn-success" type="submit" style="margin-left: 550px">Update Reservation</button>
+     <!--Direct it to reservation details-->
+     <a class="btn btn-danger" style="margin-left: 50px">Delete Reservation</a>
+     </mat-tab>
+</mat-tab-group>
