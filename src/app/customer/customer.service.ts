@@ -31,4 +31,14 @@ export class CustomerService{
   getPromotionDetails(){
     return this.http.get<{promotions:any}>("http://localhost:3000/api/promotions/getAllDetails");
   }
+
+  addMealOrder(order:any){
+    return this.http.post("http://localhost:3000/api/customer/orderMeals",order);
+
+  }
+
+  getRestaurantOwnerID(id:any){
+    return this.http.get<{ownerID:any}>("http://localhost:3000/api/orders/getRestaurantUserId/"+id);
+
+  }
 }

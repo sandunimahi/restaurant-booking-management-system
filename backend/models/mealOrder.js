@@ -5,7 +5,7 @@ const mealOrderSchema=mongoose.Schema({
   ownerID:Number,
   meal:{
   name:String,
-  description:String,
+  mealType:String,
   price:Number
   },
   quantity:Number,

@@ -387,7 +387,46 @@ router.post("/api/manager/orderMeals",(req,res,next)=> {
     ownerID:req.body.ownerID,
     meal:{
     name:req.body.meal.name,
-    description:req.body.meal.description,
+    mealType:req.body.meal.description,
+    price:req.body.meal.price
+    },
+    quantity:req.body.quantity,
+    bookedBy:{
+      role:req.body.bookedBy.role,
+      id:req.body.bookedBy.id
+    },
+    orderDate:req.body.orderDate,
+    orderTime:req.body.orderTime,
+    orderType:req.body.orderType,
+    additionalDetails:req.body.additionalDetails,
+  });
+  mealOrder.save().then(response =>{
+    console.log(response);
+    res.status(200).json({
+    });
+
+  }).catch(err => {
+    console.log("Error: "+err);
+  })
+});
+//Get UserID by managerID
+router.get("/api/orders/getRestaurantUserId/:id",(req,res,next) => {
+  Manager.findOne({'userID':req.params.id}).then(response => {
+    console.log(response.ownerID);
+    res.status(200).json({
+      ownerID:response.ownerID
+    });
+
+  });
+});
+//Ordering Meal - Customer
+router.post("/api/customer/orderMeals",(req,res,next)=> {
+  console.log("This is ordering meals by Customer");
+  const mealOrder=new MealOrder({
+    ownerID:req.body.ownerID,
+    meal:{
+    name:req.body.meal.name,
+    mealType:req.body.meal.mealType,
     price:req.body.meal.price
     },
     quantity:req.body.quantity,
@@ -458,6 +497,8 @@ router.get("/api/restaurant/getAllDetails",(req,res,next) => {
     let data=response;
     let restaurants=[];
     data.forEach(restaurant =>{
+     // restaurant.restaurant.userID=restaurant.userID;
+      //console.log(restaurant.restaurant);
       restaurants.push(restaurant.restaurant);
     });
     //console.log(restaurants);
