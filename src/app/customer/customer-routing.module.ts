@@ -9,7 +9,7 @@ import { CustomerBookedTablesComponent } from './customer-booked-tables/customer
 
 const customerRoutes: Routes = [
   {
-    path: '',
+    path: ':id',
     component:CustomerComponent,
     children: [
        { path: 'customerPromotions', component: CustomerHomeComponent },

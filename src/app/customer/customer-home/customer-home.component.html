@@ -16,13 +16,13 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr *ngFor="let home of currentHome">
-                      <td>{{home.resName}}</td>
-                      <td>{{home.resCity}}</td>
-                      <td>{{home.resDescription}}</td>
-                      <td>{{home.promoDescription}}</td>
-                      <td>{{home.promocode}}</td>
-                      <td>{{<button class="btn btn-success" type="submit" style="margin-left: 100px">Select</button>}}</td>
+                    <tr *ngFor="let home of promotions">
+                      <td>{{home.restaurantName}}</td>
+                      <td>{{home.city}}</td>
+                      <td>{{home.restaurantDescription}}</td>
+                      <td>{{home.promotionDescription}}</td>
+                      <td>{{home.promotionCode}}</td>
+                      <td><button class="btn btn-success" type="submit" style="margin-left: 0px" (click)="gotoRestaurant()">Select</button></td>
                     </tr>
                   </tbody>
                 </table>

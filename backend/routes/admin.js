@@ -422,5 +422,85 @@ router.get("/api/manager/getOrderedMeals/:id",(req,res,next)=> {
     console.log("Error: "+err);
   })
 });
+
+//Getting customer details - Update Customer -  Customer
+router.get("/api/customer/getCustomerDetailsByCustomer/:id",(req,res,next) => {
+  Customer.find({'userID':req.params.id}).then(response=>{
+    res.status(200).json({
+      customer:response
+    });
+  }).catch(err => {
+    console.log("Error: "+err);
+  })
+});
+
+//Updating Customer - By Customer
+router.post("/api/customer/updateCustomerByCustomer",(req,res,next) => {
+  Customer.updateOne({'userID':Number(req.body.userID)},{$set:{'name.firstname':req.body.firstname,'name.lastname':req.body.lastname,'address':req.body.address,'contactNumber':req.body.contactNumber,'email':req.body.email,'city':req.body.city}}).then(response => {
+    console.log(response);
+    User.updateOne({'id':Number(req.body.userID)},{$set:{'password':req.body.password}}).then(response1 =>{
+      console.log(response1);
+      res.status(200).json({
+
+      });
+    }).catch(err => {
+      console.log("Error: "+err);
+    })
+  }).catch(err => {
+    console.log("Error: "+err);
+  })
+});
+
+//Getting details of all restaurants
+router.get("/api/restaurant/getAllDetails",(req,res,next) => {
+  Owner.find().then(response=>{
+    //console.log(response[0]);
+    let data=response;
+    let restaurants=[];
+    data.forEach(restaurant =>{
+      restaurants.push(restaurant.restaurant);
+    });
+    //console.log(restaurants);
+    res.status(200).json({
+      restaurants:restaurants
+    });
+
+  }).catch(err => {
+    console.log("Error: "+err);
+  });
+
+});
+
+//Getting details of all promotions
+router.get("/api/promotions/getAllDetails",(req,res,next) => {
+  Owner.find().then(response=>{
+    //console.log(response[0]);
+    let data=response;
+    let Promotions=[];
+    data.map(restaurant =>{
+      // console.log(restaurant.restaurant.promotions);
+      let p=restaurant.restaurant.promotions;
+     // console.log(p);
+      p.map(promotion => {
+        Promotions.push({
+          resID:restaurant.userID,
+          restaurantName:restaurant.restaurant.name,
+          restaurantDescription:restaurant.restaurant.description,
+          city:restaurant.restaurant.city,
+          promotionDescription:promotion.description,
+          promotionCode:promotion.code
+        });
+      });
+    })
+    //console.log(Promotions);
+    res.status(200).json({
+       promotions:Promotions
+    });
+
+  }).catch(err => {
+    console.log("Error: "+err);
+  });
+
+});
  module.exports=router;
 

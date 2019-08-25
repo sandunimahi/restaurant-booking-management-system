@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 
 import { Router } from "@angular/router";
 import { User } from '../models/user.model';
+import { MatSnackBar } from '@angular/material';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService{
@@ -17,7 +18,7 @@ export class AuthService{
     return this.isAuthenticated;
   }
 
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(private http: HttpClient, private router: Router,private snackBar: MatSnackBar) {}
 
   registerCustomer(customer:any){
 
@@ -59,11 +60,15 @@ export class AuthService{
 
         }
         else if(response.role=="Customer"){
-          this.router.navigate(["/admin"]);
+          this.router.navigate(["/customer/"+response.userID]);
           console.log(response.userID)
         }
       }
 
+    },err =>{
+      console.log(err);
+      this.snackBar.open("Authentication Failed! Invalid username or password", "OK", {
+      });
     });
   }
 

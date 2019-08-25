@@ -4,6 +4,11 @@
      Admin Profile
     </button>
     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton"> -->
+        <div style="color:white">
+            <label>Username: {{currentUsername}} </label>
+            <br>
+            <label>UserID: C/{{userID}}</label>
+          </div>
       <div>
         <a class="list-group-item list-group-item-action " routerLink="./updateCustomerProfile" routerLinkActive="blue" >Update Profile</a>
     </div>
@@ -13,6 +18,8 @@
       <a class="list-group-item list-group-item-action " routerLink="./restaurants" routerLinkActive="blue">Restaurants</a>
       <a class="list-group-item list-group-item-action " routerLink="./viewOrderedMeals" routerLinkActive="blue">Upcoming Meal Orders</a>
       <a class="list-group-item list-group-item-action " routerLink="./viewBookedTables" routerLinkActive="blue">Upcoming Table Reservations</a>
-
+      <br>
+      <br>
+      <a class="btn btn-danger" routerLink="/">Sign Out</a>
     </div>
 
