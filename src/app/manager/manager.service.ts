@@ -42,7 +42,25 @@ export class ManagerService{
   }
 
   viewOrderedMeals(ownerID:any){
-    return this.http.get<{orders:any}>("http://localhost:3000/api/manager/getOrderedMeals/"+ownerID);
+    return this.http.get<{mealOrders:any}>("http://localhost:3000/api/manager/getOrderedMeals/"+ownerID);
 
+  }
+
+  gettingUpcommigMeals(id:any){
+    return this.http.get<{mealOrders:any}>("http://localhost:3000/api/meals/getUpcomingMealOrdersByManager/"+id);
+
+  }
+
+  gettingUpcommingTableReservations(id:any){
+    return this.http.get<{tableReservations:any}>("http://localhost:3000/api/tables/getUpcomingTableReservationsByManager/"+id);
+
+  }
+
+  getTotalOrdersData(year:Number,id:Number){
+    return this.http.get<{ data:any}>("http://localhost:3000/api/admin/reports/getOrdersData/"+year+"&"+id);
+  }
+
+  getTotalReservaionData(year:Number,id:Number){
+    return this.http.get<{ data:any}>("http://localhost:3000/api/admin/reports/getReservationData/"+year+"&"+id);
   }
 }

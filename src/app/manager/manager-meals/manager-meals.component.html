@@ -1,12 +1,12 @@
 <mat-toolbar color="primary"> Manage Meals </mat-toolbar>
 <mat-tab-group>
-  <mat-tab label="Update Meals">
+  <!-- <mat-tab label="Update Meals">
     <mat-horizontal-stepper>
       <mat-step label="Select Meal">
           <div class="form-group row">
               <label for="meal" class="col-sm-4 col-form-label">Meal</label>
               <div class="col-sm-8">
-<!--Check this-->
+
                   <div class="col-sm-4">
                       <select ngModel #selectMeal="ngModel"class="custom-select" name="selectMeal" id="selectMeal" required="">
                           <option value="">Choose...</option>
@@ -64,7 +64,7 @@
 
 
                       <div calss="form-row">
-                        <!-- <div class="col-md-6 mb-3"> -->
+
                           <label for="mealStatus" class="col-sm-4 col-form-label">Status</label>
                           <div class="col-sm-8">
                               <mat-radio-group ngModel #mealStatus="ngModel" name="mealStatus" required>
@@ -124,7 +124,7 @@
 </div>
 </mat-step>
 </mat-horizontal-stepper>
-</mat-tab>
+</mat-tab> -->
 <!--End Add Meal-->
 
 <!-- Start - View Meal -->
@@ -145,7 +145,7 @@
                   </thead>
                   <tbody>
                     <tr *ngFor="let meal of currentMeals">
-                      <td>{{meal.name}}</td>
+                          <td>{{meal.name}}</td>
                           <td>{{meal.mealType}}</td>
                           <td>{{meal.description}}</td>
                           <td>{{meal.price}}</td>
@@ -170,8 +170,8 @@
               <table class="table table-striped">
                       <thead>
                       <tr>
-                        <th scope="col">Customer Name</th>
-                        <th scope="col">Customer's City</th>
+                         <th scope="col">Customer Name</th>
+                        <th scope="col">Customer City</th>
                         <th scope="col">Contact Number</th>
                         <th scope="col">Meal Name</th>
                         <th scope="col">Meal Type</th>
@@ -179,23 +179,23 @@
                         <th scope="col">Date</th>
                         <th scope="col">Time</th>
                         <th scope="col">Price</th>
-                        <th scope="col">Dine-in/ Take-away</th>
+                        <!-- <th scope="col">Dine-in/ Take-away</th> -->
                         <!-- <th scope="col">Delete Order</th> -->
                       </tr>
                     </thead>
                     <tbody>
                       <tr *ngFor="let meal of orderedMeals">
-                        <td>{{meal.customer.name}}</td>
-                        <td>{{meal.customer.city}}</td>
-                        <td>{{meal.customer.contactNumber}}</td>
+                        <td>{{meal.customer[0].name.firstname}}</td>
+                        <td>{{meal.customer[0].city}}</td>
+                        <td>{{meal.customer[0].contactNumber}}</td>
                         <td>{{meal.meal.name}}</td>
                         <td>{{meal.meal.mealType}}</td>
                         <td>{{meal.quantity}}</td>
                         <td>{{meal.orderDate}}</td>
                         <td>{{meal.orderTime}}</td>
-                        <td>{{meal.orderType}}</td>
+                        <!-- <td>{{meal.orderType}}</td> -->
                         <td>{{meal.meal.price}}</td>
-                        <td>{{meal.meal.dinein/takeaway}}</td>
+                        <!-- <td>{{meal.meal.dineintakeaway}}</td> -->
                         <!-- <td><button class="btn btn-danger"  style="margin-left: 0px">Delete Order</button></td> -->
                       </tr>
                     </tbody>

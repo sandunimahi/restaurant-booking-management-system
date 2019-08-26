@@ -629,5 +629,101 @@ router.get("/api/tables/getUpcomingTableReservations/:id",(req,res,next) => {
   });
 
 });
+
+router.get("/api/tables/getUpcomingTableReservationsByManager/:id",(req,res,next) => {
+  TableReservation.aggregate([
+    { $match: { 'ownerID':Number(req.params.id) } },
+    {
+      $lookup:
+         {
+          from: "customers",
+          localField: "userID",
+          foreignField: "bookedBy.id",
+          as: "customer"
+         }
+    }
+  ]).then(response =>{
+    console.log(response);
+      res.status(200).json({
+        tableReservations:response
+     });
+  });
+
+});
+
+router.get("/api/meals/getUpcomingMealOrdersByManager/:id",(req,res,next) => {
+  MealOrder.aggregate([
+    { $match: { 'ownerID':Number(req.params.id) } },
+    {
+      $lookup:
+         {
+           from: "customers",
+           localField: "userID",
+           foreignField: "bookedBy.id",
+           as: "customer"
+         }
+    }
+  ]).then(response =>{
+    console.log(response);
+      res.status(200).json({
+        mealOrders:response
+     });
+  });
+});
+router.get("/api/admin/reports/getOrdersData/:year&:id",(req,res,next) => {
+  console.log("This is Getting total orders - For Reports");
+  console.log(req.params.id);
+  result=[];
+  sorted=[0,0,0,0,0,0,0,0,0,0,0,0];
+  MealOrder.aggregate([
+    {$match: { ownerID: Number(req.params.id)}},
+    {$project: { "month":{$month: '$orderDate'},"year" : {$year: '$orderDate'}}},
+    {$match: { year: Number(req.params.year)}},
+
+
+  ]).then(response =>{
+    //console.log(response);
+    result=response;
+    result.forEach(element => {
+      for(var x=0; x<12; x++){
+        if(element.month==(x+1)){
+          sorted[x]+=1;
+        }
+      }
+    });
+    console.log(sorted);
+    res.status(200).json({
+      data:sorted
+    });
+  });
+});
+
+router.get("/api/admin/reports/getReservationData/:year&:id",(req,res,next) => {
+  console.log("This is Getting total resservations - For Reports");
+  console.log(req.params.id);
+  result=[];
+  sorted=[0,0,0,0,0,0,0,0,0,0,0,0];
+  TableReservation.aggregate([
+    {$match: { ownerID: Number(req.params.id)}},
+    {$project: { "month":{$month: '$reservationDate'},"year" : {$year: '$reservationDate'}}},
+    {$match: { year: Number(req.params.year)}},
+
+
+  ]).then(response =>{
+    //console.log(response);
+    result=response;
+    result.forEach(element => {
+      for(var x=0; x<12; x++){
+        if(element.month==(x+1)){
+          sorted[x]+=1;
+        }
+      }
+    });
+    console.log(sorted);
+    res.status(200).json({
+      data:sorted
+    });
+  });
+});
  module.exports=router;
 

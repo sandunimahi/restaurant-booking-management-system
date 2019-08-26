@@ -1,12 +1,12 @@
+<cdk-virtual-scroll-viewport itemSize="50" class="example-viewport">
 <mat-toolbar color="primary"> Manage Tables </mat-toolbar>
 <mat-tab-group>
-<mat-tab label="Update Table Status">
+<!-- <mat-tab label="Update Table Status">
     <mat-horizontal-stepper>
         <mat-step label="Select Table No.">
             <div class="form-group row">
                 <label for="meal" class="col-sm-4 col-form-label">Table No.</label>
                 <div class="col-sm-8">
-  <!--Check this-->
                     <div class="col-sm-4">
                         <select ngModel #selectTable="ngModel"class="custom-select" name="selectTable" id="selectTable" required="">
                             <option value="">Choose...</option>
@@ -25,7 +25,7 @@
 <div class="container customerInfo" style="padding-top: 5px">
     <div class="row">
 
-      <!-- Start  -->
+
 
           <div class="col-6 border border-secondary" style="padding-top: 10px">
           <form  #form="ngForm">
@@ -90,7 +90,7 @@
    </div>
    </mat-step>
    </mat-horizontal-stepper>
-</mat-tab>
+</mat-tab> -->
 
     <mat-tab label="View Tables">
         <div class="col border border-secondary" style="padding-top: 10px; width:950px; padding-bottom: 200px;">
@@ -109,12 +109,12 @@
                   </thead>
                   <tbody>
                     <tr *ngFor="let table of currentTables">
-                        <td>{{table.No}}</td>
+                        <td>{{table.tableNo}}</td>
                         <td>{{table.type}}</td>
                         <td>{{table.description}}</td>
-                        <td>{{table.location}}</td>
+                        <td>{{table.tableLocation}}</td>
                         <td>{{table.seats}}</td>
-                        <td>{{table.status}}</td>
+                        <td>{{table.tableStatus}}</td>
                     </tr>
                   </tbody>
                 </table>
@@ -134,7 +134,7 @@
                           <th scope="col">Customer Name</th>
                           <th scope="col">Customer's City</th>
                           <th scope="col">Contact</th>
-                          <th scope="col">Table No.</th>
+                          <!-- <th scope="col">Table No.</th> -->
                           <th scope="col">Table Type</th>
                           <th scope="col">Description</th>
                           <th scope="col">Location</th>
@@ -146,10 +146,10 @@
                     </thead>
                     <tbody>
                       <tr *ngFor="let table of bookedTables">
-                          <td>{{table.customer.name}}</td>
-                          <td>{{table.customer.city}}</td>
-                          <td>{{table.customer.contactNumber}}</td>
-                          <td>{{table.table.No}}
+                          <td>{{table.customer[0].name.firstname}}</td>
+                          <td>{{table.customer[0].city}}</td>
+                          <td>{{table.customer[0].contactNumber}}</td>
+                          <!-- <td>{{table.table.No}} -->
                           <td>{{table.table.tableType}}</td>
                           <td>{{table.table.description}}</td>
                           <td>{{table.table.location}}</td>
@@ -162,12 +162,13 @@
                   </table>
                   <br>
                   <br>
-                  <div class="form-group row" style="margin-left: 150px; margin-top: 0px;">
+                  <!-- <div class="form-group row" style="margin-left: 150px; margin-top: 0px;">
                       <a class="btn btn-danger" > Delete Reservation</a>
-                     </div>
+                     </div> -->
               </div>
         </div>
     </mat-tab>
 
     </mat-tab-group>
 
+  </cdk-virtual-scroll-viewport>

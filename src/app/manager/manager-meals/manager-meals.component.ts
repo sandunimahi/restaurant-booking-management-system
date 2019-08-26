@@ -15,6 +15,7 @@ export class ManagerMealsComponent implements OnInit {
   constructor(private activate:ActivatedRoute,private managerService:ManagerService,private snackBar:MatSnackBar) { }
   currentUserID;
   ownerID;
+  upcomingMeals=[];
   ngOnInit() {
     this.currentUserID=this.activate.snapshot.parent.params['id'];
     this.managerService.getManagerDetails(this.currentUserID).subscribe(res =>{
@@ -23,6 +24,14 @@ export class ManagerMealsComponent implements OnInit {
       this.viewMeals();
       this.viewOrderedMealsHistory();
   });
+
+  // this.managerService.gettingUpcommigMeals(this.ownerID).subscribe(response =>{
+  //   console.log(response.mealOrders);
+  //   this.upcomingMeals=response.mealOrders;
+  //   this.upcomingMeals.map(meal =>{
+  //     meal.orderDate=new Date(meal.orderDate).toDateString();
+  //   });
+  // });
 
   }
   menuAdded=[];
@@ -96,9 +105,9 @@ export class ManagerMealsComponent implements OnInit {
   orderedMeals=[];
   viewOrderedMealsHistory(){
     this.orderedMeals=[];
-    this.managerService.viewOrderedMeals(this.ownerID).subscribe(response =>{
-
-      this.orderedMeals=response.orders;;
+    this.managerService.gettingUpcommigMeals(this.ownerID).subscribe(response =>{
+      console.log(response);
+      this.orderedMeals=response.mealOrders;
       console.log(this.orderedMeals);
       this.orderedMeals.forEach(meal => {
         meal.orderDate=new Date(meal.orderDate).toDateString();

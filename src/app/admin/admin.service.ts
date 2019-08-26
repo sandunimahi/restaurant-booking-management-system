@@ -62,4 +62,12 @@ export class AdminService{
   addMenu(MealDetails:any){
     return this.http.post("http://localhost:3000/api/menu/addMenu",MealDetails);
   }
+
+  getTotalOrdersData(year:Number,id:Number){
+    return this.http.get<{ data:any}>("http://localhost:3000/api/admin/reports/getOrdersData/"+year+"&"+id);
+  }
+
+  getTotalReservaionData(year:Number,id:Number){
+    return this.http.get<{ data:any}>("http://localhost:3000/api/admin/reports/getReservationData/"+year+"&"+id);
+  }
 }

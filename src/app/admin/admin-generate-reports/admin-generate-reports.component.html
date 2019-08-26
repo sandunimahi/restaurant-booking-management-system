@@ -1,7 +1,7 @@
 <div class="container scroll" style="border-top: 1000px">
     <cdk-virtual-scroll-viewport itemSize="50" class="example-viewport">
         <div class="row" style="margin-left: -15px">
-          <div class="col-6">
+          <div class="col-12">
               <div class="container border border-dark divDoctorInfo" style="width: 495px">
                   <p class="font-weight-bold col-6" style="padding-top: 10px">Total Orders</p>
                   <div class="row container" style="padding-bottom: 20px; padding-top: 5px;">
@@ -12,12 +12,12 @@
                         <option value="2018">2018</option>
                         <option value="2017">2017</option>
                     </select>
-                    <button class="btn btn-sm btn-success" style="margin-left: 20px" >Search</button>
+                    <button class="btn btn-sm btn-info" style="margin-left: 20px" (click)="onSearchTotalAdmissions(yearApp.value)">Search</button>
                   </div>
                   <canvas id="totalOrders" height="200"></canvas>
               </div>
           </div>
-          <div class="col-6" style="margin-left: -10px">
+          <!-- <div class="col-6" style="margin-left: -10px">
               <div class="container border border-dark divDoctorInfo" style="width: 495px">
                   <p class="font-weight-bold" style="padding-top: 10px">Total Orders per Meal</p>
                   <div class="row" style="padding-bottom: 20px; padding-top: 5px;">
@@ -31,17 +31,16 @@
                     <label for="employeeDistrict" class="col-2" style="padding-top: 8px">Meal</label>
                     <select ngModel #selectMeal="ngModel"class="custom-select col-4" name="selectMeal" id="selectMeal" required>
                       <option value="null">Choose...</option>
-                      <!-- <option *ngFor="let doctor of doctors" value="{{doctor.doctorRegistrationNumber}}">Dr.{{doctor.firstName}} {{doctor.lastName}}</option> -->
                     </select>
-                    <button class="btn btn-sm btn-success" style="margin-left: 10px" >Search</button>
+                    <button class="btn btn-sm btn-info" style="margin-left: 10px" >Search</button>
                   </div>
                   <canvas id="totalOrders_meal" height="200"></canvas>
               </div>
-          </div>
+          </div> -->
         </div>
         <br>
         <div class="row" style="margin-left: -15px">
-          <div class="col-6">
+          <div class="col-12">
               <div class="container border border-dark divDoctorInfo" style="width: 495px">
                   <p class="font-weight-bold col-6" style="padding-top: 10px">Total Reservations</p>
                   <div class="row container" style="padding-bottom: 20px; padding-top: 5px;">
@@ -52,12 +51,12 @@
                         <option value="2018">2018</option>
                         <option value="2017">2017</option>
                     </select>
-                    <button class="btn btn-sm btn-success" style="margin-left: 20px" >Search</button>
+                    <button class="btn btn-sm btn-info" style="margin-left: 20px" (click)="onSearchTotalReservations(yearAdm.value)">Search</button>
                   </div>
                   <canvas id="totalReservations" height="200"></canvas>
               </div>
           </div>
-          <div class="col-6" style="margin-left: -10px">
+          <!-- <div class="col-6" style="margin-left: -10px">
               <div class="container border border-dark divDoctorInfo" style="width: 495px">
                   <p class="font-weight-bold" style="padding-top: 10px">Number of Customers by Gender</p>
 
@@ -73,5 +72,5 @@
               <div class="container border border-dark divDoctorInfo" style="width: 495px">
                   <p class="font-weight-bold col-6" style="padding-top: 10px">Number of Customers By City</p>
                   <canvas id="customersByCity" height="200"></canvas>
-              </div>
+              </div> -->
           </div>
