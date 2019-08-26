@@ -39,7 +39,8 @@ export class CustomerRestaurantsComponent implements OnInit {
   }
 
   onAddOrder(form:NgForm){
-    // console.log(form.value);
+    console.log("Hello");
+    console.log(form.value);
     // console.log(this.currentMeals[form.value.mealName]);
 
     const order={
@@ -59,7 +60,7 @@ export class CustomerRestaurantsComponent implements OnInit {
       orderType:form.value.dineInOrTakeAway,
       additionalDetails:form.value.additionalDetails,
     }
-    console.log(order);
+    //console.log(order);
     this.customerService.addMealOrder(order).subscribe(res =>{
       form.reset();
       this.snackBar.open( "Order has been placed. Thank you", null, {

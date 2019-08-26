@@ -87,15 +87,15 @@
                 <div class="row">
 
                       <div class="col-6 border border-secondary" style="padding-top: 10px">
-                          <form (submit)="onAddOrder(form)" #form="ngForm">
+                          <form (submit)="onAddOrder(formOrder)" #formOrder="ngForm">
                           <p class="font-weight-bold">Order Details</p>
 
 
                         <div class="form-group row">
                             <label for="orderDate" class="col-sm-4 col-form-label">Order Date</label>
                             <div class="col-sm-8">
-                                <input matInput ngModel #orderDate="ngModel" name="orderDate" type="date" required>
-                                <div class="alert alert-danger" *ngIf="!orderDate.valid && orderDate.touched"></div>
+                                <input  ngModel #orderDate="ngModel" name="orderDate" type="date" required>
+                                <!-- <div class="alert alert-danger" *ngIf="!orderDate.valid && orderDate.touched"></div> -->
                          </div>
                         </div>
 
@@ -104,15 +104,16 @@
                             <div class="col-sm-8">
                                 <input ngModel #orderTime="ngModel" name="orderTime" type="time" class="form-control" id="orderTime">
                                 <div class="alert alert-danger" *ngIf="!orderTime.valid && orderTime.touched"></div>
-                                <!-- A dropdown box for the restaurant open times 1hour duartions-->
                             </div>
                         </div>
 
                         <div class="form-group row">
                           <label for="orderTime" class="col-sm-4 col-form-label">Quantity</label>
                           <div class="col-sm-8">
-                              <input ngModel #quantity="ngModel" name="quantity" type="number" class="form-control" id="quantity">
-                              <div class="alert alert-danger" *ngIf="!quantity.valid && quantity.touched"></div>
+                              <input ngModel #quantity="ngModel" name="quantity" type="text" class="form-control" id="quantity">
+                              <!-- <input ngModel #customerFirstName="ngModel" pattern="[a-zA-Z\s]+" type="text" class="form-control" id="customerFirstName" name="customerFirstName" placeholder="First name" required> -->
+
+                              <!-- <div class="alert alert-danger" *ngIf="!quantity.valid && quantity.touched"></div> -->
                               <!-- A dropdown box for the restaurant open times 1hour duartions-->
                           </div>
                       </div>

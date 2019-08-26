@@ -383,6 +383,7 @@ router.post("/api/manager/updateRestaurant",(req,res,next)=> {
 
 //Ordering Meal
 router.post("/api/manager/orderMeals",(req,res,next)=> {
+  console.log(req.body);
   console.log("This is ordering meals by Manager");
   const mealOrder=new MealOrder({
     ownerID:req.body.ownerID,
@@ -454,6 +455,7 @@ router.get("/api/orders/getRestaurantUserId/:id",(req,res,next) => {
 });
 //Ordering Meal - Customer
 router.post("/api/customer/orderMeals",(req,res,next)=> {
+  console.log(req.body);
   console.log("This is ordering meals by Customer");
   const mealOrder=new MealOrder({
     ownerID:req.body.ownerID,
