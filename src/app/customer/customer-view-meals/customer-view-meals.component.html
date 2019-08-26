@@ -2,57 +2,51 @@
 <mat-tab-group>
 <!--Upcoming Order-->
 <mat-tab label="View Meal Orders">
-  <!--show the bill-->
 
 
-  <!-- <div class="container scroll" style="border-top: 1000px">
-    <cdk-virtual-scroll-viewport itemSize="50" class="example-viewport">
-        <div class="container customerInfo" style="padding-top: 5px">
-            <div class="row">
-
-        <div  style="padding-top: 10px">
-            <p class="font-weight-bold">Order Meals</p>
-            <div class="form-group row">
-                <table class="table table-striped">
-                  <thead>
+    <div class="col border border-secondary" style="padding-top: 10px; width:950px; padding-bottom: 200px;">
+        <p class="font-weight-bold"></p>
+        <div class="form-group row">
+            <table class="table table-striped">
+                    <thead>
                     <tr>
+                      <th scope="col">Restaurant Name</th>
+                      <th scope="col">Restaurant City</th>
+                      <th scope="col">Contact Number</th>
                       <th scope="col">Meal Name</th>
+                      <th scope="col">Meal Type</th>
                       <th scope="col">Quantity</th>
                       <th scope="col">Date</th>
                       <th scope="col">Time</th>
                       <th scope="col">Dine In/Take Away</th>
-                      <th scope="col">Additional Details</th>
                       <th scope="col">Price</th>
+                      <th scope="col">Delete Order</th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr *ngFor="let meal of orderedMeals">
+                      <td>{{meal.restaurant.name}}</td>
+                      <td>{{meal.restaurant.city}}</td>
+                      <td>{{meal.restaurant.contact}}</td>
                       <td>{{meal.meal.name}}</td>
+                      <td>{{meal.meal.type}}</td>
                       <td>{{meal.quantity}}</td>
                       <td>{{meal.orderDate}}</td>
                       <td>{{meal.orderTime}}</td>
                       <td>{{meal.orderType}}</td>
-                      <td>{{meal.additionalDetails}}</td>
                       <td>{{meal.meal.price}}</td>
+                      <td><button class="btn btn-danger"  style="margin-left: 0px">Delete Order</button></td>
                     </tr>
                   </tbody>
                 </table>
                 <br>
                 <br>
                 <div class="form-group row" style="margin-left: 150px; margin-top: 0px;">
-                    <a class="btn btn-danger" > Delete Order</a>
+
                    </div>
                 </div>
                </div>
-             </div>
-             </div>
-      </cdk-virtual-scroll-viewport>
-     </div> -->
-     <br>
-     <br>
-     <button class="btn btn-success" type="submit" style="margin-left: 550px">Update Order</button>
-     <!--Direct it to order details-->
-     <a class="btn btn-danger" style="margin-left: 50px">Delete Order</a>
-</mat-tab>
-</mat-tab-group>
+               </mat-tab>
+               </mat-tab-group>
+
 

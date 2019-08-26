@@ -1,13 +1,17 @@
 <mat-toolbar color="primary"> Manage Meals </mat-toolbar>
 <mat-tab-group>
   <mat-tab label="Update Meals">
+    <mat-horizontal-stepper>
+      <mat-step label="Select Meal">
+        </mat-step>
+        <mat-step label="Update Meal">
     <div class="container scroll" style="border-top: 1000px">
       <cdk-virtual-scroll-viewport itemSize="50" class="example-viewport">
 
           <div class="container customerInfo" style="padding-top: 5px">
               <div class="row">
 
-                <!-- Start -->
+
 
                     <div class="col-6 border border-secondary" style="padding-top: 10px">
                     <form (submit)="onAddMenu(form)"  #form="ngForm">
@@ -59,7 +63,7 @@
                                 <td>{{meal.name}}</td>
                                 <td>{{meal.description}}</td>
                                 <td>{{meal.price}}</td>
-                                <!-- <td>{{meal.status}}</td> -->
+
                               </tr>
                             </tbody>
                           </table>
@@ -79,6 +83,8 @@
 </div>
 </cdk-virtual-scroll-viewport>
 </div>
+</mat-step>
+</mat-horizontal-stepper>
 </mat-tab>
 <!--End Add Meal-->
 <!-- Start - View Meal -->
@@ -117,7 +123,7 @@
 
 
 <!--Order Meal-->
-  <mat-tab label="Order Meals">
+<!--   <mat-tab label="Order Meals">
       <div class="container scroll" style="border-top: 1000px">
         <cdk-virtual-scroll-viewport itemSize="50" class="example-viewport">
 
@@ -214,7 +220,7 @@
           </cdk-virtual-scroll-viewport>
         </div>
     </mat-tab>
-
+ -->
 <!--End Order-->
 
 <!--Upcoming Order-->

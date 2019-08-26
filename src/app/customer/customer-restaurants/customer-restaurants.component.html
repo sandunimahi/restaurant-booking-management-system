@@ -14,6 +14,7 @@
                         <th scope="col">Restaurant Name</th>
                         <th scope="col">Description</th>
                         <th scope="col">City</th>
+                        <th scope="col">Contact</th>
                         <th scope="col">Opening at</th>
                         <th scope="col">Closing at</th>
                         <th scope="col">Selection</th>
@@ -24,6 +25,7 @@
                         <td>{{restaurant.name}}</td>
                         <td>{{restaurant.description}}</td>
                         <td>{{restaurant.city}}</td>
+                        <td>{{restaurant.contact}}</td>
                         <td>{{restaurant.opening}}</td>
                         <td>{{restaurant.closing}}</td>
                         <td><button matStepperNext class="btn btn-success" type="submit" style="margin-left: 0px" (click)="selectRestaurant(restaurant.meals,restaurant.managerID)">Select</button></td>
@@ -201,7 +203,127 @@
       </mat-step> -->
       </mat-horizontal-stepper>
   </mat-tab>
-  <mat-tab label="Book Tables">
+  <mat-tab label="Reserve Tables">
+      <mat-horizontal-stepper>
+          <mat-step label="Select Restaurant">
+
+
+          <div class="col border border-secondary" style="padding-top: 10px; width:950px; padding-bottom: 200px;">
+              <p class="font-weight-bold">Restaurant Details</p>
+              <div class="form-group row">
+                  <table class="table table-striped">
+                    <thead>
+                      <tr>
+                        <th scope="col">Restaurant Name</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">City</th>
+                        <th scope="col">Contact</th>
+                        <th scope="col">Opening at</th>
+                        <th scope="col">Closing at</th>
+                        <th scope="col">Selection</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let restaurant of restaurants">
+                        <td>{{restaurant.name}}</td>
+                        <td>{{restaurant.description}}</td>
+                        <td>{{restaurant.city}}</td>
+                        <td>{{restaurant.contact}}
+                        <td>{{restaurant.opening}}</td>
+                        <td>{{restaurant.closing}}</td>
+                        <td><button matStepperNext class="btn btn-success" type="submit" style="margin-left: 0px" (click)="selectRestaurant(restaurant.meals,restaurant.managerID)">Select</button></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <br>
+                  <br>
+
+                </div>
+          </div>
+
+          </mat-step>
+
+
+
+              <mat-step label="Select Date & Time">
+                  <div class="container scroll" style="border-top: 1000px">
+                      <cdk-virtual-scroll-viewport itemSize="50" class="example-viewport">
+
+                  <div class="container customerInfo" style="padding-top: 5px">
+                    <div class="row">
+
+                          <div class="col-6 border border-secondary" style="padding-top: 10px">
+                              <form (submit)="onAddOrder(form)" #form="ngForm">
+                              <p class="font-weight-bold"></p>
+
+
+                            <div class="form-group row">
+                                <label for="reseravtionDate" class="col-sm-4 col-form-label">Reservation Date</label>
+                                <div class="col-sm-8">
+                                    <input matInput ngModel #reseravtionDate="ngModel" name="reseravtionDate" type="date" required>
+                                    <div class="alert alert-danger" *ngIf="!reseravtionDate.valid && reseravtionDate.touched"></div>
+                             </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="reservationTime" class="col-sm-4 col-form-label">Reservation Time</label>
+                                <div class="col-sm-8">
+                                    <input ngModel #reservationTime="ngModel" name="reservationTime" type="time" class="form-control" id="reservationTime">
+                                    <div class="alert alert-danger" *ngIf="!reservationTime.valid && reservationTime.touched"></div>
+                                    <!-- A dropdown box for the restaurant open times 1hour duartions-->
+                                </div>
+                            </div>
+
+                          <button class="btn btn-success" type="submit" style="margin-left: 150px">Confirm</button>
+                        </form>
+
+                        </div>
+                        </div>
+                        </div>
+                        </cdk-virtual-scroll-viewport>
+                        </div>
+                      </mat-step>
+
+
+
+      <mat-step label="Select Table">
+          <div class="container" style="width: 950px; padding-bottom: 250px; padding-top: 50px">
+              <div class="col border border-secondary" style="padding-top: 10px">
+                  <p class="font-weight-bold"></p>
+                  <div class="form-group row">
+                      <table class="table table-striped">
+                          <thead>
+                              <tr>
+                                  <th scope="col">Table No.</th>
+                                  <th scope="col">Table Type</th>
+
+                                  <th scope="col">Description</th>
+                                  <th scope="col">Location</th>
+                                  <th scope="col">Seats</th>
+                                  <th scope="col">Status</th>
+                                  <th scope="col">Reserve</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr *ngFor="let table of currentTables">
+                                  <td>{{table.tableNo}}</td>
+                                  <td>{{table.type}}</td>
+                                  <td>{{table.description}}</td>
+                                  <td>{{table.tableLocation}}</td>
+                                  <td>{{table.tableSeats}}</td>
+                                  <td>{{table.tableStatus}}</td>
+                                  <td><button matStepperNext class="btn btn-success" type="submit" style="margin-left: 0px">Select</button></td>
+
+
+                              </tr>
+                            </tbody>
+                          </table>
+
+                        </div>
+                  </div>
+            </div>
+            </mat-step>
+            </mat-horizontal-stepper>
     </mat-tab>
 </mat-tab-group>
 
