@@ -67,4 +67,61 @@ export class CustomerRestaurantsComponent implements OnInit {
       });
     });
   }
+
+  selectedRestaurantTables=[];
+  selectedRestaurantOwnerID_reserveTable;
+  onSelectRestaurant_reserveTable(tables:any,managerID:any){
+    console.log(tables);
+    console.log(managerID);
+    this.selectedRestaurantTables=tables;
+    this.customerService.getRestaurantOwnerID(managerID).subscribe(response =>{
+      this.selectedRestaurantOwnerID_reserveTable=response.ownerID;
+    });
+
+  }
+  selectedTable_ReserveTable={
+    tableNo:"",
+    tableSeats:"",
+    type:"",
+    description:"",
+    tableLocation:""
+  };
+
+  onSelectTable(table :any){
+    console.log(table);
+    this.selectedTable_ReserveTable=table;
+
+    const reservation={
+      ownerID:this.selectedRestaurantOwnerID_reserveTable,
+      table:{
+      tableNo:this.selectedTable_ReserveTable.tableNo,
+      tableType:this.selectedTable_ReserveTable.type,
+      description:this.selectedTable_ReserveTable.description,
+      location:this.selectedTable_ReserveTable.tableLocation,
+      seats:this.selectedTable_ReserveTable.tableSeats
+      },
+      bookedBy:{
+        role:"Customer",
+        id:this.currentUserID
+      },
+      reservationDate:this.reservationDate,
+      reservationTime:this.reservationTime
+    }
+
+    this.customerService.addTabeReservation(reservation).subscribe(res =>{
+      this.snackBar.open( "Reservation has been placed. Thank you", null, {
+        duration:1000
+      });
+    });
+  }
+
+  reservationDate:any;
+  reservationTime:any;
+  onConfirmReserveTable(form:NgForm){
+    console.log(form.value);
+    this.reservationDate=new Date(form.value.reseravtionDate).toDateString();
+    this.reservationTime=form.value.reservationTime;
+  }
+
+
 }

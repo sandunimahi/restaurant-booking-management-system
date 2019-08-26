@@ -5,6 +5,7 @@ const Customer=require('../models/customer');
 const Owner=require('../models/owner');
 const Manager=require('../models/manager');
 const MealOrder=require('../models/mealOrder');
+const TableReservation=require('../models/tableReservation');
 const jwt=require('jsonwebtoken');
 
 
@@ -409,6 +410,38 @@ router.post("/api/manager/orderMeals",(req,res,next)=> {
     console.log("Error: "+err);
   })
 });
+
+router.post("/api/customer/tableReservation",(req,res,next)=> {
+  console.log("This is table reservation by Customer");
+  console.log(req.body);
+  const tableReservation=new TableReservation({
+    ownerID:req.body.ownerID,
+    table:{
+      tableNo:req.body.table.name,
+      tableType:req.body.table.tableType,
+      description:req.body.table.description,
+      location:req.body.table.location,
+      seats:req.body.table.seats
+    },
+
+    bookedBy:{
+      role:req.body.bookedBy.role,
+      id:req.body.bookedBy.id
+    },
+    reservationDate:req.body.reservationDate,
+    reservationTime:req.body.reservationTime,
+
+  });
+  tableReservation.save().then(response =>{
+    console.log(response);
+    res.status(200).json({
+    });
+
+  }).catch(err => {
+    console.log("Error: "+err);
+  })
+});
+
 //Get UserID by managerID
 router.get("/api/orders/getRestaurantUserId/:id",(req,res,next) => {
   Manager.findOne({'userID':req.params.id}).then(response => {
@@ -540,6 +573,57 @@ router.get("/api/promotions/getAllDetails",(req,res,next) => {
 
   }).catch(err => {
     console.log("Error: "+err);
+  });
+
+});
+//This is getting meal orders  -By Customer
+router.get("/api/meals/getUpcomingMealOrders/:id",(req,res,next) => {
+  console.log("This is getting meal orders");
+  // MealOrder.find({'bookedBy.role':'Customer','bookedBy.id':req.params.id}).then(response => {
+  //   console.log(response);
+  //   res.status(200).json({
+  //     mealOrders:response
+  //  });
+  // })
+  console.log(req.params.id);
+  MealOrder.aggregate([
+    { $match: { 'bookedBy.role':'Customer' } },
+    { $match: { 'bookedBy.id':Number(req.params.id) } },
+    {
+      $lookup:
+         {
+           from: "owners",
+           localField: "ownerID",
+           foreignField: "userID",
+           as: "restaurant"
+         }
+    }
+  ]).then(response =>{
+    console.log(response);
+      res.status(200).json({
+        mealOrders:response
+     });
+  });
+});
+
+router.get("/api/tables/getUpcomingTableReservations/:id",(req,res,next) => {
+  TableReservation.aggregate([
+    { $match: { 'bookedBy.role':'Customer' } },
+    { $match: { 'bookedBy.id':Number(req.params.id) } },
+    {
+      $lookup:
+         {
+           from: "owners",
+           localField: "ownerID",
+           foreignField: "userID",
+           as: "restaurant"
+         }
+    }
+  ]).then(response =>{
+    console.log(response);
+      res.status(200).json({
+        tableReservations:response
+     });
   });
 
 });

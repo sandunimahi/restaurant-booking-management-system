@@ -37,8 +37,24 @@ export class CustomerService{
 
   }
 
+  addTabeReservation(reservation:any){
+    return this.http.post("http://localhost:3000/api/customer/tableReservation",reservation);
+
+  }
+
+
   getRestaurantOwnerID(id:any){
     return this.http.get<{ownerID:any}>("http://localhost:3000/api/orders/getRestaurantUserId/"+id);
+
+  }
+
+  gettingUpcommigMeals(id:any){
+    return this.http.get<{mealOrders:any}>("http://localhost:3000/api/meals/getUpcomingMealOrders/"+id);
+
+  }
+
+  gettingUpcommingTableReservations(id:any){
+    return this.http.get<{tableReservations:any}>("http://localhost:3000/api/tables/getUpcomingTableReservations/"+id);
 
   }
 }

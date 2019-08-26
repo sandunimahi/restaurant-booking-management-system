@@ -25,7 +25,7 @@
                         <td>{{restaurant.name}}</td>
                         <td>{{restaurant.description}}</td>
                         <td>{{restaurant.city}}</td>
-                        <td>{{restaurant.contact}}</td>
+                        <td>{{restaurant.contactNumber}}</td>
                         <td>{{restaurant.opening}}</td>
                         <td>{{restaurant.closing}}</td>
                         <td><button matStepperNext class="btn btn-success" type="submit" style="margin-left: 0px" (click)="selectRestaurant(restaurant.meals,restaurant.managerID)">Select</button></td>
@@ -228,10 +228,10 @@
                         <td>{{restaurant.name}}</td>
                         <td>{{restaurant.description}}</td>
                         <td>{{restaurant.city}}</td>
-                        <td>{{restaurant.contact}}
+                        <td>{{restaurant.contactNumber}}
                         <td>{{restaurant.opening}}</td>
                         <td>{{restaurant.closing}}</td>
-                        <td><button matStepperNext class="btn btn-success" type="submit" style="margin-left: 0px" (click)="selectRestaurant(restaurant.meals,restaurant.managerID)">Select</button></td>
+                        <td><button matStepperNext class="btn btn-success" type="submit" style="margin-left: 0px" (click)="onSelectRestaurant_reserveTable(restaurant.tables,restaurant.managerID)">Select</button></td>
                       </tr>
                     </tbody>
                   </table>
@@ -253,7 +253,7 @@
                     <div class="row">
 
                           <div class="col-6 border border-secondary" style="padding-top: 10px">
-                              <form (submit)="onAddOrder(form)" #form="ngForm">
+                              <form (submit)="onConfirmReserveTable(form)" #form="ngForm">
                               <p class="font-weight-bold"></p>
 
 
@@ -274,7 +274,7 @@
                                 </div>
                             </div>
 
-                          <button class="btn btn-success" type="submit" style="margin-left: 150px">Confirm</button>
+                          <button matStepperNext class="btn btn-success" type="submit" style="margin-left: 150px">Confirm</button>
                         </form>
 
                         </div>
@@ -305,14 +305,14 @@
                               </tr>
                             </thead>
                             <tbody>
-                              <tr *ngFor="let table of currentTables">
+                              <tr *ngFor="let table of selectedRestaurantTables">
                                   <td>{{table.tableNo}}</td>
                                   <td>{{table.type}}</td>
                                   <td>{{table.description}}</td>
                                   <td>{{table.tableLocation}}</td>
                                   <td>{{table.tableSeats}}</td>
                                   <td>{{table.tableStatus}}</td>
-                                  <td><button matStepperNext class="btn btn-success" type="submit" style="margin-left: 0px">Select</button></td>
+                                  <td><button matStepperNext (click)="onSelectTable(table)"class="btn btn-success" type="submit" style="margin-left: 0px">Select</button></td>
 
 
                               </tr>

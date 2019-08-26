@@ -25,11 +25,11 @@
                   </thead>
                   <tbody>
                     <tr *ngFor="let meal of orderedMeals">
-                      <td>{{meal.restaurant.name}}</td>
-                      <td>{{meal.restaurant.city}}</td>
-                      <td>{{meal.restaurant.contact}}</td>
+                      <td>{{meal.restaurant[0].restaurant.name}}</td>
+                      <td>{{meal.restaurant[0].restaurant.city}}</td>
+                      <td>{{meal.restaurant[0].restaurant.contactNumber}}</td>
                       <td>{{meal.meal.name}}</td>
-                      <td>{{meal.meal.type}}</td>
+                      <td>{{meal.meal.mealType}}</td>
                       <td>{{meal.quantity}}</td>
                       <td>{{meal.orderDate}}</td>
                       <td>{{meal.orderTime}}</td>
