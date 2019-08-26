@@ -7,6 +7,7 @@ import { AdminManagePromotionsComponent } from './admin-manage-promotions/admin-
 import { AdminManageTablesComponent } from './admin-manage-tables/admin-manage-tables.component';
 import { AdminManageMealsComponent } from './admin-manage-meals/admin-manage-meals.component';
 import { AdminUpdateProfileComponent } from './admin-update-profile/admin-update-profile.component';
+import { AdminGenerateReportsComponent } from './admin-generate-reports/admin-generate-reports.component';
 
 const adminRoutes: Routes = [
   {
@@ -19,6 +20,7 @@ const adminRoutes: Routes = [
        { path: 'manageTables', component: AdminManageTablesComponent },
        { path: 'manageMeals', component: AdminManageMealsComponent },
        { path: 'adminUpdateProfile', component: AdminUpdateProfileComponent},
+       { path: 'adminGenerateReports', component: AdminGenerateReportsComponent}
     ]
   },
 
